@@ -13,7 +13,7 @@ printf "
  / /  / _ \| '_ \| __/ _\` | | '_ \ / _ \ '__| __/ _ \/ __| __/ _ \ '__|
 / /__| (_) | | | | || (_| | | | | |  __/ |  | ||  __/\__ \ ||  __/ |   
 \____/\___/|_| |_|\__\__,_|_|_| |_|\___|_|___\__\___||___/\__\___|_|   
-                                        |_____|                       \n\n"
+                                        |_____|          by Grademe.fr\n\n"
 }
 
 switch_tostud() {
@@ -164,6 +164,7 @@ if [ $goodtest -eq $i ]; then
     printf "\n\n  RESULT : $GREEN$goodtest$RESET/$i 🥳 $RESET\n\n"
 else
     printf "\n\n  RESULT : $RED$goodtest$RESET/$i 😣 $RESET\n\n"
+    printf "Find logs in the folder 'logs_student'\n"
 fi
 
 

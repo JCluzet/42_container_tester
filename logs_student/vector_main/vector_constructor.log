@@ -1,4 +1,16 @@
-main/vector_main/push_back.cpp:21:18: error: implicit conversion from 'long' to 'const ft::vector<int>::value_type' (aka 'const int') changes value from 1412432432432 to -611807952 [-Werror,-Wconstant-conversion]
-    s1.push_back(1412432432432);
-       ~~~~~~~~~ ^~~~~~~~~~~~~
-1 error generated.
+main/vector_main/assign.cpp:19:23: error: no type named 'const_iterator' in 'ft::vector<int>'
+                typename vector<T>::const_iterator it = vct.begin();
+                ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+main/vector_main/assign.cpp:39:2: note: in instantiation of function template specialization 'printSize<int>' requested here
+        printSize(vct);
+        ^
+In file included from main/vector_main/assign.cpp:1:
+In file included from main/vector_main/../main.hpp:22:
+In file included from main/vector_main/../../.././stack/stack.hpp:14:
+main/vector_main/../../.././stack/vector.hpp:157:27: error: indirection requires pointer operand ('int' invalid)
+                push_back(*first++);
+                          ^~~~~~~~
+main/vector_main/assign.cpp:44:10: note: in instantiation of function template specialization 'ft::vector<int>::assign<int>' requested here
+        vct_two.assign(2, 42);
+                ^
+2 errors generated.
