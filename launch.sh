@@ -181,6 +181,14 @@ printf "\n                       $WHITE COMPILATION $RESET | $WHITE OUTPUT $RESE
 i=0
 goodtest=0
 # for each folder in the directory main/
+# if there is a argument then only test the file name given in argument
+if [ $1 ]; then
+    actual_test=$1
+    testing
+    i=1
+else
+
+
 for folder in main/*/; do
 #stock folder in foldername variable in MAJ mode (upper case) and remove the last / to get the name of the folder and remove the first 5 characteres
 foldername=$(echo $folder | tr '[:lower:]' '[:upper:]' | sed 's/.$//' | sed 's/^.\{5\}//')
@@ -194,6 +202,7 @@ for actual_test in $(find $folder -name "*.cpp" -type f); do
     i=$(($i + 1))
 done
 done
+fi
 rm .dev > /dev/null 2>&1
 rm a.out > /dev/null 2>&1
 
