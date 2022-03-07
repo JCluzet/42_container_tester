@@ -1,16 +1,16 @@
-main/vector_main/assign.cpp:19:23: error: no type named 'const_iterator' in 'ft::vector<int>'
+main/vector_modifiers//assign.cpp:19:23: error: no type named 'const_iterator' in 'ft::vector<int>'
                 typename vector<T>::const_iterator it = vct.begin();
                 ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
-main/vector_main/assign.cpp:39:2: note: in instantiation of function template specialization 'printSize<int>' requested here
+main/vector_modifiers//assign.cpp:39:2: note: in instantiation of function template specialization 'printSize<int>' requested here
         printSize(vct);
         ^
-In file included from main/vector_main/assign.cpp:1:
-In file included from main/vector_main/../main.hpp:22:
-In file included from main/vector_main/../../.././stack/stack.hpp:14:
-main/vector_main/../../.././stack/vector.hpp:157:27: error: indirection requires pointer operand ('int' invalid)
+In file included from main/vector_modifiers//assign.cpp:1:
+In file included from main/vector_modifiers/../main.hpp:22:
+In file included from main/vector_modifiers/../../.././stack/stack.hpp:14:
+main/vector_modifiers/../../.././stack/vector.hpp:157:27: error: indirection requires pointer operand ('int' invalid)
                 push_back(*first++);
                           ^~~~~~~~
-main/vector_main/assign.cpp:44:10: note: in instantiation of function template specialization 'ft::vector<int>::assign<int>' requested here
+main/vector_modifiers//assign.cpp:44:10: note: in instantiation of function template specialization 'ft::vector<int>::assign<int>' requested here
         vct_two.assign(2, 42);
                 ^
 2 errors generated.

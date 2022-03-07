@@ -2,18 +2,23 @@
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 RESET='\033[0m'
+YELLOW='\033[0;33m'
+BOLD='\033[1m'
+RESETBOLD='\033[21m'
+PURPLE='\033[0;35m'
+WHITE='\033[1;37m'
 
 clear
 
 header()
 {
-printf "
+printf "$WHITE
    ___            _        _                 _            _            
   / __\___  _ __ | |_ __ _(_)_ __   ___ _ __| |_ ___  ___| |_ ___ _ __ 
  / /  / _ \| '_ \| __/ _\` | | '_ \ / _ \ '__| __/ _ \/ __| __/ _ \ '__|
 / /__| (_) | | | | || (_| | | | | |  __/ |  | ||  __/\__ \ ||  __/ |   
 \____/\___/|_| |_|\__\__,_|_|_| |_|\___|_|___\__\___||___/\__\___|_|   
-                                        |_____|          by Grademe.fr\n\n"
+                                        |_____|          by Grademe.fr$RESET\n\n"
 }
 
 switch_tostud() {
@@ -39,7 +44,7 @@ testing() {
     clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
     # output maxnb - maxnb space characters
     if [ "$?" == "0" ]; then
-        printf "$actual"
+        printf "$WHITE$BOLD$actual$RESET"
         while [ $getspace -gt 0 ]; do
             getspace=$(($getspace - 1))
             printf " "
@@ -47,7 +52,7 @@ testing() {
         printf "$GREEN        OK      $RESET"
         nul=0
     else
-        printf "$actual"
+        printf "$RED$BOLD$actual$RESET"
         while [ $getspace -gt 0 ]; do
             getspace=$(($getspace - 1))
             printf " "
@@ -88,7 +93,7 @@ testing() {
             printf "s$RESET |"
         fi
     else
-        printf "| $RED   KO    $RESET|"
+        printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
     fi
     printf "\n"
 }
@@ -150,21 +155,31 @@ echo "#include \"../$path_vector\"" >>main/main.hpp
 printf "$RESET\n"
 header
 echo -n "-------------------------------"
-printf "$GREEN VECTOR $RESET-------------------------------\n"
-printf "\n                        COMPILATION  |  OUTPUT  |   STD    |   FT\n"
+printf "$WHITE VECTOR $RESET-------------------------------\n"
+printf "\n                       $WHITE COMPILATION $RESET | $WHITE OUTPUT $RESET |  $WHITE STD  $RESET  | $WHITE  FT$RESET\n"
 
 i=0
 goodtest=0
-for actual_test in $(find main/vector_main -name "*.cpp" -type f); do
+# for each folder in the directory main/
+for folder in main/*/; do
+#stock folder in foldername variable in MAJ mode (upper case) and remove the last / to get the name of the folder and remove the first 5 characteres
+foldername=$(echo $folder | tr '[:lower:]' '[:upper:]' | sed 's/.$//' | sed 's/^.\{5\}//')
+if [ $i -ne 0 ]; then
+    printf "\n --> $PURPLE$BOLD$foldername\n"
+else
+    printf " --> $PURPLE$BOLD$foldername\n"
+fi
+for actual_test in $(find $folder -name "*.cpp" -type f); do
     testing
     i=$(($i + 1))
 done
+done
 
 if [ $goodtest -eq $i ]; then
-    printf "\n\n  RESULT : $GREEN$goodtest$RESET/$i 🥳 $RESET\n\n"
+    printf "\n\n $WHITE RESULT : $GREEN$goodtest$RESET/$WHITE$i 🥳 $RESET\n\n"
 else
-    printf "\n\n  RESULT : $RED$goodtest$RESET/$i 😣 $RESET\n\n"
-    printf "Find logs in the folder 'logs_student'\n"
+    printf "\n\n $WHITE RESULT : $RED$goodtest$RESET/$WHITE$i 😣 $RESET\n"
+    printf "$WHITE     └──> Find logs in the folder$BOLD logs_student$RESET$WHITE$RESET\n"
 fi
 
 
