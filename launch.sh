@@ -103,6 +103,7 @@ testing() {
             printf "s$RESET |"
         fi
     else
+    if [ "$diffoutput" != "Compilation KO" ]; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
         echo "YOUR OUTPUT:" >$logs
@@ -111,6 +112,7 @@ testing() {
         echo "$outputboc" >>$logs
         echo "DIFF:" >>$logs
         echo $diffoutput >> $logs
+    fi
         printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
     fi
     printf "\n"
