@@ -37,6 +37,12 @@ testing() {
     switch_tostud
     rm a.out >/dev/null 2>&1
     actual=$(echo $actual_test | sed 's/.*\///' | sed 's/\.cpp//')
+    #remove the 5 first characters of the string and adding .log at the end
+    logs=$(echo $actual_test | sed 's/^.\{5\}//' | sed 's/\.cpp//')
+    logs=logs_student/$logs.log
+    # replace every // by /
+    logs=$(echo $logs | sed 's/\/\//\//g')
+    #echo ">>$logs<<" 
     actualnb=$(echo $actual | wc -c)
     # printf ">>$actual<<\n"
     maxnb=22
@@ -57,7 +63,9 @@ testing() {
             getspace=$(($getspace - 1))
             printf " "
         done
-        cat .dev >logs_student/vector_main/vector_constructor.log
+        mkdir -p $logs >/dev/null 2>&1
+        rm -r $logs
+        cat .dev >$logs
         printf "$RED        KO      $RESET"
         nul=1
     fi
