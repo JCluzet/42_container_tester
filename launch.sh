@@ -21,6 +21,8 @@ printf "$WHITE
                                         |_____|          by Grademe.fr$RESET\n\n"
 }
 
+rm -rf logs_student > /dev/null 2>&1
+
 switch_tostud() {
     cat main/main.hpp | sed 's/using namespace std/using namespace ft/g' | sed 's/namespace std/namespace ft/g' >maintmp.hpp
     rm main/main.hpp
@@ -101,6 +103,14 @@ testing() {
             printf "s$RESET |"
         fi
     else
+        mkdir -p $logs >/dev/null 2>&1
+        rm -r $logs
+        echo "YOUR OUTPUT:" >$logs
+        echo "$outputstud" >>$logs
+        echo "BOC OUTPUT:" >>$logs
+        echo "$outputboc" >>$logs
+        echo "DIFF:" >>$logs
+        echo $diffoutput >> $logs
         printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
     fi
     printf "\n"
@@ -182,6 +192,8 @@ for actual_test in $(find $folder -name "*.cpp" -type f); do
     i=$(($i + 1))
 done
 done
+rm .dev > /dev/null 2>&1
+rm a.out > /dev/null 2>&1
 
 if [ $goodtest -eq $i ]; then
     printf "\n\n $WHITE RESULT : $GREEN$goodtest$RESET/$WHITE$i 🥳 $RESET\n\n"
