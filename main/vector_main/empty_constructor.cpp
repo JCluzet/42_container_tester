@@ -6,11 +6,10 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 19:49:13 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/07 01:10:10 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/07 03:08:27 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "../main.hpp"
 
 int main()

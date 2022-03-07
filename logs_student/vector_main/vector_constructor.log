@@ -1,7 +1,4 @@
-In file included from main/vector_main/fill_constructor.cpp:14:
-In file included from main/vector_main/../main.hpp:22:
-In file included from main/vector_main/../../.././stack/stack.hpp:14:
-main/vector_main/../../.././stack/vector.hpp:46:13: error: use of undeclared identifier 'sleep'
-            sleep(1);
-            ^
+main/vector_main/push_back.cpp:21:18: error: implicit conversion from 'long' to 'const ft::vector<int>::value_type' (aka 'const int') changes value from 1412432432432 to -611807952 [-Werror,-Wconstant-conversion]
+    s1.push_back(1412432432432);
+       ~~~~~~~~~ ^~~~~~~~~~~~~
 1 error generated.

@@ -140,7 +140,7 @@ clear
 # mv maintmp.hpp main/main.hpp
 
 # remove all lines after the line 22 in main/main.hpp
-cat main/main.hpp | sed '22,100d' >maintmp.hpp
+cat main/main.hpp | sed '22,100d' >maintmp.hpp # if adding line in .hpp then add +1 to 22
 rm main/main.hpp
 mv maintmp.hpp main/main.hpp
 

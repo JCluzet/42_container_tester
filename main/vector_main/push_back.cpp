@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_constructor.cpp                               :+:      :+:    :+:   */
+/*   push_back.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 19:49:13 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/07 03:08:24 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/07 03:08:21 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 int main()
 {
-    vector<int> s4(10, 2);
-    vector<int>::iterator p1 = s4.begin();
-    vector<int>::iterator p2 = s4.end();
-    while (p1 != p2)
+    vector<int> s1;
+    s1.push_back(1);
+    s1.push_back(2);
+    s1.push_back(212121);
+
+    // range constructor
+    vector<int> s3(s1.begin(), s1.end());
+    vector<int>::iterator it3 = s3.begin();
+    vector<int>::iterator it4 = s3.end();
+    while (it3 != it4)
     {
-        std::cout << *p1 << std::endl;
-        p1++;
+        std::cout << *it3 << std::endl;
+        it3++;
     }
-    std::cout << std::endl;
+    return 0;
 }
