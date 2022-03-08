@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   capacity.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:13:40 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 01:21:11 by jcluzet          ###   ########.fr       */
+/*   Created: 2022/03/08 01:38:12 by jcluzet           #+#    #+#             */
+/*   Updated: 2022/03/08 01:39:24 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "../main.hpp"
 
-namespace std {}
-using namespace std;
+int main()
+{
+    vector<int> s1;
+    s1.push_back(1);
+    s1.push_back(2);
+    s1.push_back(212121);
+    print_vec(s1);
 
-#include <vector>
-#include <iostream>
-#include <stack>
-#include <iterator>
-#include "../.././stack/stack.hpp"
-#include "../.././stack/vector.hpp"
-#include "print_vec.hpp"
+    // capacity
+    std::cout << "capacity: " << s1.capacity() << std::endl;
+    
+    s1.push_back(1);
+    s1.push_back(2);
+    s1.push_back(212121);
+    print_vec(s1);
+
+    s1.push_back(1);
+
+    std::cout << "capacity: " << s1.capacity() << std::endl;
+}

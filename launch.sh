@@ -74,8 +74,9 @@ testing() {
 
     if [ $nul -eq 0 ]; then
         # stock actual time with seconds
-        outputstud=$(./a.out)
-        stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null )"
+        outputstud=$(./a.out )
+        stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null)"
+        #sleep 100
         switch_toboc
         clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
         outputboc=$(./a.out)
@@ -171,6 +172,7 @@ mv maintmp.hpp main/main.hpp
 
 echo "#include \"../$path_stack\"" >>main/main.hpp
 echo "#include \"../$path_vector\"" >>main/main.hpp
+echo "#include \"print_vec.hpp\"" >>main/main.hpp
 
 printf "$RESET\n"
 header
@@ -210,7 +212,7 @@ if [ $goodtest -eq $i ]; then
     printf "\n\n $WHITE RESULT : $GREEN$goodtest$RESET/$WHITE$i 🥳 $RESET\n\n"
 else
     printf "\n\n $WHITE RESULT : $RED$goodtest$RESET/$WHITE$i 😣 $RESET\n"
-    printf "$WHITE     └──> Find logs in the folder$BOLD logs_student$RESET$WHITE$RESET\n"
+    printf "$WHITE           └──> Find logs in the folder$BOLD logs_student$RESET$WHITE$RESET\n\n"
 fi
 
 

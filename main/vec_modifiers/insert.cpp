@@ -6,22 +6,11 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 19:52:50 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 00:56:52 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/08 01:16:39 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.hpp"
-
-void print_vec(vector<int> &v)
-{
-    vector<int>::iterator it = v.begin();
-    vector<int>::iterator itr = v.end();
-    while (it != itr)
-    {
-        std::cout << *it << std::endl;
-        it++;
-    }
-}
 
 int main()
 {

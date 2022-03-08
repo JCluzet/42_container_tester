@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop_back.cpp                                       :+:      :+:    :+:   */
+/*   reserve.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 19:49:13 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/07 19:51:54 by jcluzet          ###   ########.fr       */
+/*   Created: 2022/03/08 01:41:50 by jcluzet           #+#    #+#             */
+/*   Updated: 2022/03/08 01:42:50 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,24 @@
 int main()
 {
     vector<int> s1;
+    std::cout << "empty: " << s1.empty() << std::endl;
     s1.push_back(1);
     s1.push_back(2);
     s1.push_back(212121);
-    s1.push_back(212122121);
-    s1.pop_back();
-    s1.pop_back();
-    s1.pop_back();
+    print_vec(s1);
 
-    // range constructor
-    vector<int> s3(s1.begin(), s1.end());
-    vector<int>::iterator it3 = s3.begin();
-    vector<int>::iterator it4 = s3.end();
-    while (it3 != it4)
-    {
-        std::cout << *it3 << std::endl;
-        it3++;
-    }
-    return 0;
+    // reserve
+    s1.reserve(10);
+    print_vec(s1);
+
+    s1.push_back(1);
+    s1.push_back(2);
+    s1.push_back(212121);
+
+    s1.reserve(12);
+    std::cout << "size: " << s1.size() << std::endl;
+    std::cout << "capacity: " << s1.capacity() << std::endl;
+    s1.reserve(16);
+    std::cout << "size: " << s1.size() << std::endl;
+    std::cout << "capacity: " << s1.capacity() << std::endl;
 }

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   max_size.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:13:40 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 01:21:11 by jcluzet          ###   ########.fr       */
+/*   Created: 2022/03/08 01:35:02 by jcluzet           #+#    #+#             */
+/*   Updated: 2022/03/08 01:35:34 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "../main.hpp"
 
-namespace std {}
-using namespace std;
-
-#include <vector>
-#include <iostream>
-#include <stack>
-#include <iterator>
-#include "../.././stack/stack.hpp"
-#include "../.././stack/vector.hpp"
-#include "print_vec.hpp"
+int main()
+{
+    vector<int> s1;
+    std::cout << "max_size: " << s1.max_size() << std::endl;
+    s1.push_back(1);
+    s1.push_back(2);
+    s1.push_back(212121);
+    std::cout << "max_size: " << s1.max_size() << std::endl;
+    s1.clear();
+    std::cout << "max_size: " << s1.max_size() << std::endl;
+    return(0);
+}
