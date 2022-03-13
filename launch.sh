@@ -8,6 +8,17 @@ RESETBOLD='\033[21m'
 PURPLE='\033[0;35m'
 WHITE='\033[1;37m'
 
+output=$(echo -e "test")
+if [[ $output == "test" ]]
+then
+    clear
+else
+    clear
+    printf "${RED}ERROR :${RESET} Please launch this script with bash. ${GREEN} \n\nTry : ${RESET}bash launch.sh\n\n"
+    exit 1
+fi
+
+
 clear
 
 header()
@@ -97,7 +108,7 @@ testing() {
         clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
         outputboc=$(./a.out)
         boc_time="$(time ( ./a.out ) 2>&1 1>/dev/null )"
-        diffoutput=$(diff <(echo "$outputstud") <(echo "$outputboc"))
+        diffoutput=$(diff <echo ("$outputstud") <(echo "$outputboc"))
     else
         diffoutput="Compilation KO"
     fi
@@ -123,11 +134,11 @@ testing() {
     if [ "$diffoutput" != "Compilation KO" ]; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
-        echo "YOUR OUTPUT:" >$logs
+        echo " >> ----------------------- YOUR OUTPUT:" >$logs
         echo "$outputstud" >>$logs
-        echo "BOC OUTPUT:" >>$logs
+        echo " >> ----------------------- BOC OUTPUT:" >>$logs
         echo "$outputboc" >>$logs
-        echo "DIFF:" >>$logs
+        echo " >> ----------------------- DIFF:" >>$logs
         echo $diffoutput >> $logs
     fi
         printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
@@ -190,10 +201,10 @@ echo "#include \"../$path_stack\"" >>main/main.hpp
 echo "#include \"../$path_vector\"" >>main/main.hpp
 echo "#include \"print_vec.hpp\"" >>main/main.hpp
 
-printf "$RESET\n"
+printf "$RESET\n\n"
 header
-echo -n "-------------------------------"
-printf "$WHITE VECTOR $RESET-------------------------------\n"
+# echo -n "-------------------------------"
+# printf "$WHITE VECTOR $RESET-------------------------------\n"
 printf "\n                       $WHITE COMPILATION $RESET | $WHITE OUTPUT $RESET |  $WHITE STD  $RESET  | $WHITE  FT$RESET\n"
 
 i=0
