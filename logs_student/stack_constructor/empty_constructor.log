@@ -1,0 +1,28 @@
+ >> ----------------------- YOUR OUTPUT:
+INT CONSTRUCTOR:
+top: 1
+top: 2
+top: 212121
+CHAR CONSTRUCTOR:
+top: 97
+top: 98
+top: 99
+FLOAT CONSTRUCTOR:
+top: 1
+top: 2
+top: 3
+ >> ----------------------- BOC OUTPUT:
+INT CONSTRUCTOR:
+top: 1
+top: 2
+top: 212121
+CHAR CONSTRUCTOR:
+top: a
+top: b
+top: c
+FLOAT CONSTRUCTOR:
+top: 1.1
+top: 2.2
+top: 3.3
+ >> ----------------------- DIFF:
+6,8c6,8 < top: 97 < top: 98 < top: 99 --- > top: a > top: b > top: c 10,12c10,12 < top: 1 < top: 2 < top: 3 --- > top: 1.1 > top: 2.2 > top: 3.3

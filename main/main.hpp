@@ -12,8 +12,8 @@
 
 #pragma once
 
-namespace ft {}
-using namespace ft;
+namespace std {}
+using namespace std;
 
 #include <vector>
 #include <iostream>

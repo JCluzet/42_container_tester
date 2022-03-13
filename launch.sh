@@ -103,12 +103,11 @@ testing() {
         # stock actual time with seconds
         outputstud=$(./a.out )
         stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null)"
-        #sleep 100
         switch_toboc
         clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
         outputboc=$(./a.out)
         boc_time="$(time ( ./a.out ) 2>&1 1>/dev/null )"
-        diffoutput=$(diff <echo ("$outputstud") <(echo "$outputboc"))
+        diffoutput=$(diff <(echo "$outputstud") <(echo "$outputboc"))
     else
         diffoutput="Compilation KO"
     fi
