@@ -23,6 +23,22 @@ printf "$WHITE
 
 rm -rf logs_student > /dev/null 2>&1
 
+test_byfolder() {
+    for folder in main/$folderact/; do
+#stock folder in foldername variable in MAJ mode (upper case) and remove the last / to get the name of the folder and remove the first 5 characteres
+foldername=$(echo $folder | tr '[:lower:]' '[:upper:]' | sed 's/.$//' | sed 's/^.\{5\}//')
+if [ $i -ne 0 ]; then
+    printf "\n --> $PURPLE$BOLD$foldername\n"
+else
+    printf " --> $PURPLE$BOLD$foldername\n"
+fi
+for actual_test in $(find $folder -name "*.cpp" -type f); do
+    testing
+    i=$(($i + 1))
+done
+done
+}
+
 switch_tostud() {
     cat main/main.hpp | sed 's/using namespace std/using namespace ft/g' | sed 's/namespace std/namespace ft/g' >maintmp.hpp
     rm main/main.hpp
@@ -185,25 +201,40 @@ goodtest=0
 # for each folder in the directory main/
 # if there is a argument then only test the file name given in argument
 if [ $1 ]; then
-    actual_test=$1
-    testing
-    i=1
+    # if argument is "stack" or "STACK" then only test the stack
+    if [ "$1" == "stack" ]
+    then
+        folderact="stack_*"
+        test_byfolder
+    elif [ "$1" == "vector" ]
+    then
+        folderact="vec_*"
+        test_byfolder
+    elif [ "$1" == "map" ]
+    then
+        folderact="map_*"
+        test_byfolder
+    # elif $1 is a folder name
+    elif [ "$1" == "main" ] || [ "$1" == "main/" ]
+    then
+        folderact="*"
+        test_byfolder
+    elif [ -d "$1" ]
+    then
+        folderact=$(echo $1 | sed 's/^.\{5\}//')
+        test_byfolder
+    elif [ -f "$1" ]
+    then
+        actual_test=$1
+        testing
+        i=$(($i + 1))
+    else
+        printf "$RED \nThe argument $RESET$1$RED is not a folder name or a file name.\n$RESET\nExemple : ./launch.sh stack\n          ./launch.sh vector\n          ./launch.sh map\n          ./launch.sh main/vector_capacity\n          ./launch.sh main/vector_capacity/vec_push_back.c\n          ./launch.sh\n"
+        exit 1
+    fi
 else
-
-
-for folder in main/*/; do
-#stock folder in foldername variable in MAJ mode (upper case) and remove the last / to get the name of the folder and remove the first 5 characteres
-foldername=$(echo $folder | tr '[:lower:]' '[:upper:]' | sed 's/.$//' | sed 's/^.\{5\}//')
-if [ $i -ne 0 ]; then
-    printf "\n --> $PURPLE$BOLD$foldername\n"
-else
-    printf " --> $PURPLE$BOLD$foldername\n"
-fi
-for actual_test in $(find $folder -name "*.cpp" -type f); do
-    testing
-    i=$(($i + 1))
-done
-done
+    folderact="*"
+    test_byfolder
 fi
 rm .dev > /dev/null 2>&1
 rm a.out > /dev/null 2>&1
