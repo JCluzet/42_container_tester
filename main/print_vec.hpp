@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:20:05 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/17 16:58:31 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/17 18:33:32 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ std::string	ftname(std::string s){
 }
 
 template <typename T>
-std::string	vecToS(vector<T> v, std::string s){
+std::string	vecToS(vector<T> v, std::string s, size_t c){
 	std::string r = s + " = {";
 	for (size_t i = 0; i < v.size(); i++) {
 		r += !i ? "" : ".";
@@ -46,6 +46,6 @@ std::string	vecToS(vector<T> v, std::string s){
 	r += "}, size";
 	r += std::to_string(v.size());
 	r += ", capacity";
-	r += std::to_string(v.capacity());
+	r += std::to_string(c);
 	return r;
 }

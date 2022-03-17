@@ -256,6 +256,10 @@ else
     printf "$WHITE           └──> Find logs in the folder$BOLD logs_student$RESET$WHITE$RESET\n\n"
 fi
 
+if [ -f "a.out" ]; then
+    rm a.out > /dev/null 2>&1
+fi
+
 
 # actual_test="main/vector_main/copy_constructor.cpp"
 # testing

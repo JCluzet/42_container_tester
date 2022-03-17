@@ -6,8 +6,8 @@ int main()
 	vector<int> p(3, 5);
 	for (size_t i = 0; i < p.size(); i++) {
 		p.pop_back();
-		std::cout << "p.pop_back(1)" << std::endl;
-		std::cout << vecToS(p, "p") << std::endl;
+		std::cout << "p.pop_back()" << std::endl;
+		std::cout << vecToS(p, "p", p.capacity()) << std::endl;
 	}
 	std::cout << std::endl;
 }

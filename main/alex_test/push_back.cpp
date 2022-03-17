@@ -7,7 +7,7 @@ int main()
 	for (int ii = 0; ii < 5; ii++) {
 		o.push_back(1);
 		std::cout << "o.push_back(1)" << std::endl;
-		std::cout << vecToS(o, "o") << std::endl;
+		std::cout << vecToS(o, "o", o.capacity()) << std::endl;
 	}
 	std::cout << std::endl;
 }

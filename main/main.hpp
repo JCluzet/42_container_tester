@@ -6,14 +6,14 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 22:13:40 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/13 13:28:42 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/17 17:54:44 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-namespace ft {}
-using namespace ft;
+namespace std {}
+using namespace std;
 
 #include <vector>
 #include <iostream>
