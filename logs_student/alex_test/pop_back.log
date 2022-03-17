@@ -1,0 +1,14 @@
+ >> ----------------------- YOUR OUTPUT:
+------------------------------------pop_back-------------------------------------
+p.pop_back(1)
+p = {5.5}, size2, capacity3
+p.pop_back(1)
+p = {5}, size1, capacity3
+ >> ----------------------- BOC OUTPUT:
+------------------------------------pop_back-------------------------------------
+p.pop_back(1)
+p = {5.5}, size2, capacity2
+p.pop_back(1)
+p = {5}, size1, capacity1
+ >> ----------------------- DIFF:
+3c3 < p = {5.5}, size2, capacity3 --- > p = {5.5}, size2, capacity2 5c5 < p = {5}, size1, capacity3 --- > p = {5}, size1, capacity1

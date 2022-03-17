@@ -1,0 +1,26 @@
+ >> ----------------------- YOUR OUTPUT:
+------------------------------------push_back------------------------------------
+o.push_back(1)
+o = {1}, size1, capacity1
+o.push_back(1)
+o = {1.1}, size2, capacity2
+o.push_back(1)
+o = {1.1.1}, size3, capacity4
+o.push_back(1)
+o = {1.1.1.1}, size4, capacity4
+o.push_back(1)
+o = {1.1.1.1.1}, size5, capacity8
+ >> ----------------------- BOC OUTPUT:
+------------------------------------push_back------------------------------------
+o.push_back(1)
+o = {1}, size1, capacity1
+o.push_back(1)
+o = {1.1}, size2, capacity2
+o.push_back(1)
+o = {1.1.1}, size3, capacity3
+o.push_back(1)
+o = {1.1.1.1}, size4, capacity4
+o.push_back(1)
+o = {1.1.1.1.1}, size5, capacity5
+ >> ----------------------- DIFF:
+7c7 < o = {1.1.1}, size3, capacity4 --- > o = {1.1.1}, size3, capacity3 11c11 < o = {1.1.1.1.1}, size5, capacity8 --- > o = {1.1.1.1.1}, size5, capacity5

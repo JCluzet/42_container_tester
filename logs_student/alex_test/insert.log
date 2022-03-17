@@ -1,0 +1,20 @@
+ >> ----------------------- YOUR OUTPUT:
+-------------------------------------insert--------------------------------------
+q = {0.0.0}, size3, capacity3
+*(q.insert(q.begin(), 4)) = 1
+q = {1.0.0.0}, size4, capacity6
+q.insert(q.begin() + 2, 2, 2)
+q = {1.0.2.2.0.0}, size6, capacity6
+q.insert(q.end(), 2, 2)
+q = {1.0.2.2.0.0.1.0.2.2.0.0}, size12, capacity12
+ >> ----------------------- BOC OUTPUT:
+-------------------------------------insert--------------------------------------
+q = {0.0.0}, size3, capacity3
+*(q.insert(q.begin(), 4)) = 1
+q = {1.0.0.0}, size4, capacity4
+q.insert(q.begin() + 2, 2, 2)
+q = {1.0.2.2.0.0}, size6, capacity6
+q.insert(q.end(), 2, 2)
+q = {1.0.2.2.0.0.1.0.2.2.0.0}, size12, capacity12
+ >> ----------------------- DIFF:
+4c4 < q = {1.0.0.0}, size4, capacity6 --- > q = {1.0.0.0}, size4, capacity4
