@@ -3,7 +3,6 @@
 
 int main()
 {
-    std::cout << ftname("max_size")  << std::endl;
     vector<bool> v01;
     vector<char> v02;
     vector<char16_t> v03;

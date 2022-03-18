@@ -1,7 +1,4 @@
-main/alex_test//erase.cpp:10:61: error: indirection requires pointer operand ('void' invalid)
-        std::cout << "r.erase(r.begin() + 3) = " << std::to_string(*(r.erase(r.begin() + 3))) << std::endl;
-                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~
-main/alex_test//erase.cpp:12:77: error: invalid operands to binary expression ('ft::vector<int>::iterator' (aka 'vectiterator<int>') and 'int')
+main/alex_test//erase.cpp:13:77: error: invalid operands to binary expression ('ft::vector<int>::iterator' (aka 'vectiterator<int>') and 'int')
         std::cout << "r.erase(r.end() - 1) = " << std::to_string(*(r.erase(r.end() - 1))) << std::endl;
                                                                            ~~~~~~~ ^ ~
 main/alex_test/../../.././stack/iterators.hpp:76:32: note: candidate function not viable: no known conversion from 'int' to 'const ft::vectiterator<int>' for 2nd argument
@@ -10,4 +7,4 @@ main/alex_test/../../.././stack/iterators.hpp:76:32: note: candidate function no
 main/alex_test/../../.././stack/iterators.hpp:72:29: note: candidate function not viable: no known conversion from 'ft::vector<int>::iterator' (aka 'vectiterator<int>') to 'ft::vectiterator<int>::difference_type' (aka 'long') for 1st argument
         friend vectiterator     operator-(difference_type n, const vectiterator& it) 
                                 ^
-2 errors generated.
+1 error generated.

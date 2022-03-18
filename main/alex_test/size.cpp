@@ -2,7 +2,6 @@
 
 int main()
 {
-	std::cout << ftname("size") << std::endl;
     vector<int> f;
     std::cout << "vector f" << std::endl << "f.size = " << f.size() << std::endl;
     vector<int> g(12,4);

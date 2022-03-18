@@ -100,7 +100,19 @@ testing() {
     fi
 
     if [ $nul -eq 0 ]; then
-        # stock actual time with seconds
+        # if a.out take more than 1 second to execute, it's a timeout error
+
+        # starttime=$(date +%s)
+        # time ./a.out 2>&1 ; sleep 1 ; kill -9 $! >/dev/null 2>&1
+        # # if process is still running after 1 second, it's a timeout error 
+        # endtime=$(date +%s)
+        # echo "heyyyy"
+        # if [ $(($endtime - $starttime)) -gt 1 ]; then
+        #     printf "$RED        TIMEOUT $RESET"
+        #     nul=1
+        # fi
+
+
         outputstud=$(./a.out )
         stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null)"
         switch_toboc
@@ -255,6 +267,7 @@ else
     printf "\n\n $WHITE RESULT : $RED$goodtest$RESET/$WHITE$i 😣 $RESET\n"
     printf "$WHITE           └──> Find logs in the folder$BOLD logs_student$RESET$WHITE$RESET\n\n"
 fi
+
 
 if [ -f "a.out" ]; then
     rm a.out > /dev/null 2>&1

@@ -2,14 +2,13 @@
 
 int main()
 {	
-    std::cout << ftname("resize") << std::endl;
     vector<int>i (5,1);
-	std::cout << vecToS(i, "i", i.capacity()) << std::endl;
+    print_vec(i);
     i.resize(3,2);
 	std::cout << "i.resize(3,2)" << std::endl;
-    std::cout  << vecToS(i, "i", i.capacity()) << std::endl;
+    print_vec(i);
     i.resize(12,2);
 	std::cout << "i.resize(12,2)" << std::endl;
-    std::cout  << vecToS(i, "i", i.capacity()) << std::endl;
+    print_vec(i);
 	std::cout << std::endl;
 }
