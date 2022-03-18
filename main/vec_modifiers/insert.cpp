@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 19:52:50 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 01:16:39 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/19 00:17:56 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main()
     // using insert(iterator, first, last)
     vector<int> s4(5,2);
     vector<int>::iterator it3 = s4.begin() + 1;
-    vector<int>::iterator it3r = s4.begin() + 3;
+    vector<int>::iterator it3r = s4.begin() + 1;
     s4.insert(it3, s3.begin(), s3.end());
     print_vec(s4);
 
