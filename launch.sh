@@ -105,10 +105,10 @@ testing() {
     # if giveup=5 then we skip the test
     if [ $giveup -eq 5 ]; then
         clear
-        printf "STOP TESTER: too many${RED}ERROR $RESET \n\n"
+        printf "STOP TESTER: too many${RED} ERROR $RESET \n"
         printf "Please check your error :\n"
         cat $logs >&2
-        printf "$WHITE           └──> Find this error in the folder$BOLD logs_student$RESET$WHITE$RESET\n\n"
+        printf "$WHITE           └──> Find and fix this error in your code$BOLD logs in folder :$RESET$WHITE logs_student$RESET\n\n"
         exit
     fi
 
