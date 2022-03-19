@@ -164,6 +164,16 @@ testing() {
             printf "s$RESET  | $RED$stud_t"
             printf "s$RESET |"
         fi
+        if [ "$verbose" == "--verbose" ]; then
+        mkdir -p $logs >/dev/null 2>&1
+        rm -r $logs
+        echo " >> ----------------------- YOUR OUTPUT:" >$logs
+        echo "$outputstud" >>$logs
+        echo " >> ----------------------- BOC OUTPUT:" >>$logs
+        echo "$outputboc" >>$logs
+        echo " >> ----------------------- NO DIFF ✅ " >>$logs
+        echo $diffoutput >> $logs
+        fi
     else
     if [ "$diffoutput" != "Compilation KO" ] && [ $nul -eq 0 ] ; then
         mkdir -p $logs >/dev/null 2>&1
@@ -179,6 +189,8 @@ testing() {
     fi
     printf "\n"
 }
+
+verbose=$1
 
 echo "----------- FT_CONTAINERS TESTER SETUP ----------------"
 
@@ -267,7 +279,7 @@ i=0
 goodtest=0
 # for each folder in the directory main/
 # if there is a argument then only test the file name given in argument
-if [ $1 ]; then
+if [ $1 ] && [ "$1" != "--verbose" ]; then
     # if argument is "stack" or "STACK" then only test the stack
     if [ "$1" == "stack" ]
     then
