@@ -1,0 +1,26 @@
+ >> ----------------------- YOUR OUTPUT:
+1 2 212121 capacity:4 size:3
+
+1 2 212121 0 0 capacity:5 size:5
+
+1 2 capacity:5 size:2
+
+capacity:5 size:0
+
+0 0 0 0 0 capacity:5 size:5
+
+capacity:5 size:0
+ >> ----------------------- BOC OUTPUT:
+1 2 212121 capacity:4 size:3
+
+1 2 212121 0 0 capacity:8 size:5
+
+1 2 capacity:8 size:2
+
+capacity:8 size:0
+
+0 0 0 0 0 capacity:8 size:5
+
+capacity:8 size:0
+ >> ----------------------- DIFF ❌ 
+3c3 < 1 2 212121 0 0 capacity:5 size:5 --- > 1 2 212121 0 0 capacity:8 size:5 5c5 < 1 2 capacity:5 size:2 --- > 1 2 capacity:8 size:2 7c7 < capacity:5 size:0 --- > capacity:8 size:0 9c9 < 0 0 0 0 0 capacity:5 size:5 --- > 0 0 0 0 0 capacity:8 size:5 11c11 < capacity:5 size:0 --- > capacity:8 size:0

@@ -275,8 +275,8 @@ echo "void print_vec(vector <T> &v)" >>main/main.hpp
 echo "{" >>main/main.hpp
 echo "    for (size_t i = 0; i < v.size(); i++)" >>main/main.hpp
 echo "        std::cout << v[i] << \" \";" >>main/main.hpp
-echo "    std::cout << \"capacity : \" << v.capacity() << std::endl;" >>main/main.hpp
-echo "    std::cout << \"size : \" << v.size() << std::endl;" >>main/main.hpp
+echo "    std::cout << \"capacity:\" << v.capacity();" >>main/main.hpp
+echo "    std::cout << \" size:\" << v.size() << std::endl;" >>main/main.hpp
 echo "    std::cout << std::endl;" >>main/main.hpp
 echo "}" >>main/main.hpp
 

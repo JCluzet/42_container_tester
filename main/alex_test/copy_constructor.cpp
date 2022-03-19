@@ -4,7 +4,7 @@
 int main()
 {
     vector<int> a;
-    for (size_t i = 0; i < 5025; i++){
+    for (size_t i = 0; i < 198; i++){
         a.push_back(i);
     }
     // print_vec(a);
