@@ -174,6 +174,16 @@ testing() {
         echo " >> ----------------------- NO DIFF ✅ " >>$logs
         echo $diffoutput >> $logs
         fi
+        if [ "$verbose1" == "--verbose" ]; then
+        mkdir -p $logs >/dev/null 2>&1
+        rm -r $logs
+        echo " >> ----------------------- YOUR OUTPUT:" >$logs
+        echo "$outputstud" >>$logs
+        echo " >> ----------------------- BOC OUTPUT:" >>$logs
+        echo "$outputboc" >>$logs
+        echo " >> ----------------------- NO DIFF ✅ " >>$logs
+        echo $diffoutput >> $logs
+        fi
     else
     if [ "$diffoutput" != "Compilation KO" ] && [ $nul -eq 0 ] ; then
         mkdir -p $logs >/dev/null 2>&1
@@ -182,7 +192,7 @@ testing() {
         echo "$outputstud" >>$logs
         echo " >> ----------------------- BOC OUTPUT:" >>$logs
         echo "$outputboc" >>$logs
-        echo " >> ----------------------- DIFF:" >>$logs
+        echo " >> ----------------------- DIFF ❌ " >>$logs
         echo $diffoutput >> $logs
     fi
         printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
@@ -191,6 +201,7 @@ testing() {
 }
 
 verbose=$1
+verbose1=$2
 
 echo "----------- FT_CONTAINERS TESTER SETUP ----------------"
 
