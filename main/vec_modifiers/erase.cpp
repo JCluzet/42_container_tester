@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:15:27 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 01:26:17 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/19 22:48:41 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int main()
     s1.erase(s1.begin());
     print_vec(s1);
 
+    
+
     // erase with iterator
-    s1.erase(s1.begin(), s1.begin() + 2);
+    s1.erase(s1.begin(), s1.begin());
     print_vec(s1);
 }

@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 19:49:13 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/07 18:04:58 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/19 23:27:54 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ int main()
 
     // copy constructor
     vector<int> s2(s1);
-    vector<int>::iterator itr = s2.begin();
-    vector<int>::iterator it2r = s2.end();
-    while (itr != it2r)
-    {
-        std::cout << *itr << std::endl;
-        itr++;
-    }
+    print_vec(s2);
     return(0);
 }
