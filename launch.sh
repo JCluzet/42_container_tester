@@ -95,7 +95,7 @@ testing() {
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
         cat .dev >$logs
-        printf "$RED        KO      $RESET"
+        printf "$RED        KO      $RESET|   $YELLOW  SKIPPED $RESET    "
         nul=1
     fi
 
@@ -117,6 +117,16 @@ testing() {
         stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null)"
         switch_toboc
         clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
+        if [ "$?" == "0" ]; then
+        printf "|$GREEN       OK        $RESET"
+        nul=0
+    else
+        mkdir -p $logs >/dev/null 2>&1
+        rm -r $logs
+        cat .dev >$logs
+        printf "|$RED       KO        $RESET"
+        nul=1
+    fi
         outputboc=$(./a.out)
         boc_time="$(time ( ./a.out ) 2>&1 1>/dev/null )"
         diffoutput=$(diff <(echo "$outputstud") <(echo "$outputboc"))
@@ -216,7 +226,7 @@ printf "$RESET\n\n"
 header
 # echo -n "-------------------------------"
 # printf "$WHITE VECTOR $RESET-------------------------------\n"
-printf "\n                       $WHITE COMPILATION $RESET | $WHITE OUTPUT $RESET |  $WHITE STD  $RESET  | $WHITE  FT$RESET\n"
+printf "\n                       $WHITE COMPILATION $RESET |$WHITE STD COMPILATION $RESET| $WHITE OUTPUT $RESET |  $WHITE STD  $RESET  | $WHITE  FT$RESET\n"
 
 i=0
 goodtest=0
