@@ -6,20 +6,28 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:20:05 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/18 20:11:31 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/19 12:43:33 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template <typename T>
 void print_vec(vector<T> &v)
 {
-    vector<int>::iterator it = v.begin();
-    vector<int>::iterator itr = v.end();
-    while (it != itr)
+    // print vector using operator []
+    for (size_t i = 0; i < v.size(); i++)
     {
-        std::cout << *it << " ";
-        it++;
+        std::cout << v[i] << " ";
     }
+    std::cout << std::endl;
+        std::cout << "capacity : " << v.capacity() << std::endl;
+        std::cout << "size : " << v.size() << std::endl;
+    // vector<int>::iterator it = v.begin();
+    // vector<int>::iterator itr = v.end();
+    // while (it != itr)
+    // {
+    //     std::cout << *it << " ";
+    //     it++;
+    // }
 }
 
 // std::string	ftname(std::string s){

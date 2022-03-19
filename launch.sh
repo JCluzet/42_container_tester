@@ -152,7 +152,7 @@ testing() {
             printf "s$RESET |"
         fi
     else
-    if [ "$diffoutput" != "Compilation KO" ]; then
+    if [ "$diffoutput" != "Compilation KO" ] && [ $nul -eq 0 ] ; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
         echo " >> ----------------------- YOUR OUTPUT:" >$logs
