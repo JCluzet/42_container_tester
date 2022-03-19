@@ -62,6 +62,8 @@ switch_toboc() {
     mv maintmp.hpp main/main.hpp
 }
 
+giveup=0
+
 testing() {
     switch_tostud
     rm a.out >/dev/null 2>&1
@@ -71,7 +73,7 @@ testing() {
     logs=logs_student/$logs.log
     # replace every // by /
     logs=$(echo $logs | sed 's/\/\//\//g')
-    #echo ">>$logs<<" 
+    #echo ">>$logs<<"
     actualnb=$(echo $actual | wc -c)
     # printf ">>$actual<<\n"
     maxnb=22
@@ -86,6 +88,7 @@ testing() {
         done
         printf "$GREEN        OK      $RESET"
         nul=0
+        giveup=10
     else
         printf "$RED$BOLD$actual$RESET"
         while [ $getspace -gt 0 ]; do
@@ -96,7 +99,16 @@ testing() {
         rm -r $logs
         cat .dev >$logs
         printf "$RED        KO      $RESET|   $YELLOW  SKIPPED $RESET    "
+        giveup=$((giveup + 1))
         nul=1
+    fi
+    # if giveup=5 then we skip the test
+    if [ $giveup -eq 5 ]; then
+        clear
+        printf "${RED}ERROR :$RESET\n\n"
+        cat $logs >&2
+        printf "$WHITE           └──> Find this error in the folder$BOLD logs_student$RESET$WHITE$RESET\n\n"
+        exit
     fi
 
     if [ $nul -eq 0 ]; then
@@ -209,6 +221,18 @@ else
         read path_vector
     fi
 fi
+# if there is a using namespace in Stack.hpp or stack.hpp, then show error
+
+clear
+header
+if [ "$(cat $path_stack | grep "using namespace")" != "" ]; then
+    printf "$RED \nYour Stack.hpp file contains a$WHITE using namespace$RED !\n ->$WHITE This is not allowed, please remove it for testing.$RESET\n"
+    exit
+fi
+if [ "$(cat $path_stack | grep "using namespace")" != "" ]; then
+    printf "$RED \nYour Vector.hpp file contains a$WHITE using namespace$RED !\n ->$WHITE This is not allowed, please remove it for testing.$RESET\n"
+    exit
+fi
 clear
 # rm main/main.hpp
 # mv maintmp.hpp main/main.hpp
@@ -220,13 +244,23 @@ mv maintmp.hpp main/main.hpp
 
 echo "#include \"../$path_stack\"" >>main/main.hpp
 echo "#include \"../$path_vector\"" >>main/main.hpp
-echo "#include \"print_vec.hpp\"" >>main/main.hpp
+# echo "#include \"print_vec.hpp\"" >>main/main.hpp
+echo " " >>main/main.hpp
+echo "template <typename T>" >>main/main.hpp
+echo "void print_vec(vector <T> &v)" >>main/main.hpp
+echo "{" >>main/main.hpp
+echo "    for (size_t i = 0; i < v.size(); i++)" >>main/main.hpp
+echo "        std::cout << v[i] << \" \";" >>main/main.hpp
+echo "    std::cout << \"capacity : \" << v.capacity() << std::endl;" >>main/main.hpp
+echo "    std::cout << \"size : \" << v.size() << std::endl;" >>main/main.hpp
+echo "    std::cout << std::endl;" >>main/main.hpp
+echo "}" >>main/main.hpp
 
 printf "$RESET\n\n"
 header
 # echo -n "-------------------------------"
 # printf "$WHITE VECTOR $RESET-------------------------------\n"
-printf "\n                       $WHITE COMPILATION $RESET |$WHITE STD COMPILATION $RESET| $WHITE OUTPUT $RESET |  $WHITE STD  $RESET  | $WHITE  FT$RESET\n"
+printf "\n                       $WHITE COMPILATION $RESET |$WHITE STD COMPILATION $RESET| $WHITE  DIFF  $RESET |  $WHITE STD  $RESET  | $WHITE  FT$RESET\n"
 
 i=0
 goodtest=0
