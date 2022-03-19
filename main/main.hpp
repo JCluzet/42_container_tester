@@ -19,6 +19,15 @@ using namespace ft;
 #include <iostream>
 #include <stack>
 #include <iterator>
-#include "../.././stack/stack.hpp"
-#include "../.././stack/vector.hpp"
-#include "print_vec.hpp"
+#include "../.././stack.hpp"
+#include "../.././vector.hpp"
+ 
+template <typename T>
+void print_vec(vector <T> &v)
+{
+    for (size_t i = 0; i < v.size(); i++)
+        std::cout << v[i] << " ";
+    std::cout << "capacity : " << v.capacity() << std::endl;
+    std::cout << "size : " << v.size() << std::endl;
+    std::cout << std::endl;
+}
