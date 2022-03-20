@@ -12,6 +12,6 @@ int main()
 	print_vec(r);
 	std::cout << "r.erase(r.end() - 1) = " << std::to_string(*(r.erase(r.end() - 1))) << std::endl;
 	print_vec(r);
-	std::cout << "r.erase(r.begin() + 3, r.begin() + 6) = " << std::to_string(*(r.erase(r.begin()+3,r.begin()+6))) << std::endl;
+	//std::cout << "r.erase(r.begin() + 3, r.begin() + 6) = " << std::to_string(*(r.erase(r.begin()+3,r.begin()+6))) << std::endl;
 	print_vec(r);
 }
