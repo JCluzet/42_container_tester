@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:38:12 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/13 14:27:27 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/20 12:27:13 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int main()
     std::cout << "capacity: " << s2.capacity() << std::endl;
 
     print_vec(s2);
+
+	vector<int> j;
+	print_vec(j);
+	j.push_back(1);
+	std::cout << "j.push_back(1)" << std::endl;
+	print_vec(j);
+	std::cout << std::endl;
 
 
 

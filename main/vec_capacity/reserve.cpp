@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:41:50 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 01:42:50 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/20 12:30:42 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,13 @@ int main()
     s1.reserve(16);
     std::cout << "size: " << s1.size() << std::endl;
     std::cout << "capacity: " << s1.capacity() << std::endl;
+    vector<int> l(10, 4);
+	print_vec(l);
+    l.reserve(5);
+    std::cout << "l.reserve(5)" << std::endl;
+	print_vec(l);
+    l.reserve(35);
+    std::cout << "l.reserve(35)" << std::endl;
+	print_vec(l);
+	std::cout << std::endl;
 }

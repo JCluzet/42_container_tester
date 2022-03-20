@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 19:49:13 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/07 03:08:24 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/20 12:28:40 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int main()
 {
     vector<int> s4(10, 2);
-    vector<int>::iterator p1 = s4.begin();
-    vector<int>::iterator p2 = s4.end();
-    while (p1 != p2)
-    {
-        std::cout << *p1 << std::endl;
-        p1++;
-    }
+    print_vec(s4);
     std::cout << std::endl;
+    vector<int> c(10, 2);
+    print_vec(c);
+    std::cout << c.capacity() << std::endl;
+	std::cout << std::endl;
 }

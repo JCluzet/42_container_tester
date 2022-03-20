@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 19:49:13 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/08 01:29:29 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/20 12:29:58 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,12 @@ int main()
     // range constructor
     vector<int> s3(s1.begin(), s1.end());
     print_vec(s3);
+	vector<int> p(3, 5);
+	for (size_t i = 0; i < p.size(); i++) {
+		p.pop_back();
+		std::cout << "p.pop_back()" << std::endl;
+		print_vec(p);
+	}
+	std::cout << std::endl;
     return 0;
 }

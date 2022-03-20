@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 19:52:50 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/19 22:33:46 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/20 12:29:18 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,18 @@ int main()
     s2.insert(s2.begin(), s2.begin(), s2.end());
     
     print_vec(s2);
+	vector<int> o(4,4);
+	vector<int> q(3, 0);
+	print_vec(q);
+	std::cout << "*(q.insert(q.begin(), 4)) = " << std::to_string(*(q.insert(q.begin(), 1))) << std::endl;
+	print_vec(q);
+	std::cout << "q.insert(q.begin() + 2, 2, 2)" << std::endl;
+	q.insert(q.begin() + 2, 2, 2);
+	print_vec(q);
+	std::cout << "q.insert(q.end(), 2, 2)" << std::endl;
+	// testing insert(iterator position, InputIterator first, InputIterator last)
+	q.insert(q.end(), o.begin(), o.end());
+	print_vec(q);
+	std::cout << std::endl;
     return(0);
 }
