@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 19:52:50 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/20 12:29:18 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/20 18:16:29 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ int main()
 	q.insert(q.end(), o.begin(), o.end());
 	print_vec(q);
 	std::cout << std::endl;
+    vector<int> s7(4,2);
+    s7.insert(s7.begin() + 1, 5, 0);
+    print_vec(s7);
     return(0);
 }
