@@ -78,7 +78,7 @@ testing() {
     # printf ">>$actual<<\n"
     maxnb=22
     getspace=$(($maxnb-$actualnb))
-    clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
+    clang++ -Wall -Wextra -Werror -g3 $actual_test >.dev 2>&1
     # output maxnb - maxnb space characters
     if [ "$?" == "0" ]; then
         printf "$WHITE$BOLD$actual$RESET"
@@ -129,7 +129,7 @@ testing() {
         outputstud=$(./a.out )
         stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null)"
         switch_toboc
-        clang++ -Wall -Wextra -Werror $actual_test >.dev 2>&1
+        clang++ -Wall -Wextra -Werror -g3 $actual_test >.dev 2>&1
         if [ "$?" == "0" ]; then
         printf "|$GREEN       OK        $RESET"
         nul=0
