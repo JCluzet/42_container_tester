@@ -210,25 +210,27 @@ echo "----------- FT_CONTAINERS TESTER SETUP ----------------"
 path_stack=$(find ../. -name "stack.hpp" -o -name "Stack.hpp" | head -n 1)
 if [ "$path_stack" == "" ]; then
     printf "$RED \nCan't find any files named 'stack.hpp' or 'Stack.hpp' in the current directory or in subdirectories.$RESET\n\nExpected Tree:\n\n. [your_project]\n└── container_test\n    └── launch.sh \n\nEnter your path to the file 'stack.hpp' or 'Stack.hpp' : "
-    read path_stack
+    # read path_stack
 else
     printf "We found the file : $GREEN $path_stack$RESET for Stack\n"
     # printf "Do you want to use this file ? (y/n) : "
     # read answer
-    answer="y"
-    if [ "$answer" == "y" ]; then
-        printf "Using$GREEN $path_stack$RESET for Stack\n"
-    else
-        printf "Enter your path to the file 'stack.hpp' or 'Stack.hpp' : "
-        read path_stack
-    fi
+    # answer="y"
+    # if [ "$answer" == "y" ]; then
+    #     printf "Using$GREEN $path_stack$RESET for Stack\n"
+    # else
+    #     printf "Enter your path to the file 'stack.hpp' or 'Stack.hpp' : "
+    #     read path_stack
+    # fi
 fi
 # cat main/main.hpp | sed '21d' > maintmp.hpp
 # echo "#include \"../$path_stack\"" >> maintmp.hpp
 # rm main/main.hpp
 # mv maintmp.hpp main/main.hpp
 
-printf "\n\n\n\n"
+echo "TESTING FT_CONTAINERS"
+
+# printf "\n\n\n\n"
 path_vector=$(find ../. -name "vector.hpp" -o -name "Vector.hpp" | head -n 1)
 if [ "$path_stack" == "" ]; then
     printf "$RED \nCan't find any files named 'vector.hpp' or 'Vector.hpp' in the current directory or in subdirectories.$RESET\n\nExpected Tree:\n\n. [your_project]\n└── container_test\n    └── launch.sh \n\nEnter your path to the file 'stack.hpp' or 'Stack.hpp' : "
@@ -237,15 +239,33 @@ else
     printf "We found the file : $GREEN $path_vector$RESET for Vector\n"
     # printf "Do you want to use this file ? (y/n) : "
     # read answer
-    answer="y"
-    if [ "$answer" == "y" ]; then
-        printf "Using$GREEN $path_vector$RESET for Vector\n"
-    else
-        printf "Enter your path to the file 'vector.hpp' or 'Vector.hpp' : "
-        read path_vector
-    fi
+    # answer="y"
+    # if [ "$answer" == "y" ]; then
+    #     printf "Using$GREEN $path_vector$RESET for Vector\n"
+    # else
+    #     printf "Enter your path to the file 'vector.hpp' or 'Vector.hpp' : "
+    #     read path_vector
+    # fi
 fi
 # if there is a using namespace in Stack.hpp or stack.hpp, then show error
+
+printf "\n\n\n\n"
+path_map=$(find ../. -name "map.hpp" -o -name "Map.hpp" | head -n 1)
+if [ "$path_map" == "" ]; then
+    printf "$RED \nCan't find any files named 'map.hpp' or 'Map.hpp' in the current directory or in subdirectories.$RESET\n\nExpected Tree:\n\n. [your_project]\n└── container_test\n    └── launch.sh \n\nEnter your path to the file 'stack.hpp' or 'Stack.hpp' : "
+    # read path_vector
+else
+    printf "We found the file : $GREEN $path_map$RESET for Map\n"
+    # printf "Do you want to use this file ? (y/n) : "
+    # read answer
+    # answer="y"
+    # if [ "$answer" == "y" ]; then
+    #     printf "Using$GREEN $path_map$RESET for Map\n"
+    # else
+    #     printf "Enter your path to the file 'map.hpp' or 'map.hpp' : "
+    #     read path_vector
+    # fi
+fi
 
 clear
 header
@@ -255,6 +275,10 @@ if [ "$(cat $path_stack | grep "using namespace")" != "" ]; then
 fi
 if [ "$(cat $path_stack | grep "using namespace")" != "" ]; then
     printf "$RED \nYour Vector.hpp file contains a$WHITE using namespace$RED !\n ->$WHITE This is not allowed, please remove it for testing.$RESET\n"
+    exit
+fi
+if [ "$(cat $path_map | grep "using namespace")" != "" ]; then
+    printf "$RED \nYour Map.hpp file contains a$WHITE using namespace$RED !\n ->$WHITE This is not allowed, please remove it for testing.$RESET\n"
     exit
 fi
 clear
@@ -268,6 +292,7 @@ mv maintmp.hpp main/main.hpp
 
 echo "#include \"../$path_stack\"" >>main/main.hpp
 echo "#include \"../$path_vector\"" >>main/main.hpp
+echo "#include \"../$path_map\"" >> main/main.hpp
 # echo "#include \"print_vec.hpp\"" >>main/main.hpp
 echo " " >>main/main.hpp
 echo "template <typename T>" >>main/main.hpp

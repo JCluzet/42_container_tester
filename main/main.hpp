@@ -12,8 +12,8 @@
 
 #pragma once
 
-namespace std {}
-using namespace std;
+namespace ft {}
+using namespace ft;
 
 #include <vector>
 #include <iostream>
@@ -21,6 +21,7 @@ using namespace std;
 #include <iterator>
 #include "../.././stack/stack.hpp"
 #include "../.././stack/vector.hpp"
+#include "../.././stack/map.hpp"
  
 template <typename T>
 void print_vec(vector <T> &v)
