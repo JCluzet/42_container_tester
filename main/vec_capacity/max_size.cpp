@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:35:02 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/03/20 12:29:42 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/03/27 18:37:43 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int main()
     std::cout << "max_size: " << s1.max_size() << std::endl;
     s1.clear();
     std::cout << "max_size: " << s1.max_size() << std::endl;
-    vector<bool> v01;
     vector<char> v02;
     vector<char16_t> v03;
     vector<char32_t> v04;
@@ -37,8 +36,6 @@ int main()
     vector<unsigned int> v13;
     vector<unsigned long int> v14;
     vector<unsigned long long int> v15;
-    std::cout << "vector<bool> v01;" << std::endl;
-    std::cout << v01.max_size() << std::endl;
     std::cout << "vector<char> v02;" << std::endl;
     std::cout << v02.max_size() << std::endl;
     std::cout << "vector<char16_t> v03;" << std::endl;
