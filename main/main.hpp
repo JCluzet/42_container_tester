@@ -12,8 +12,8 @@
 
 #pragma once
 
-namespace ft {}
-using namespace ft;
+namespace std {}
+using namespace std;
 
 #include <vector>
 #include <iostream>
@@ -22,6 +22,7 @@ using namespace ft;
 #include "../.././stack/stack.hpp"
 #include "../.././stack/vector.hpp"
 #include "../.././stack/map.hpp"
+#include <map>
  
 template <typename T>
 void print_vec(vector <T> &v)

@@ -293,6 +293,7 @@ mv maintmp.hpp main/main.hpp
 echo "#include \"../$path_stack\"" >>main/main.hpp
 echo "#include \"../$path_vector\"" >>main/main.hpp
 echo "#include \"../$path_map\"" >> main/main.hpp
+echo "#include <map>" >> main/main.hpp
 # echo "#include \"print_vec.hpp\"" >>main/main.hpp
 echo " " >>main/main.hpp
 echo "template <typename T>" >>main/main.hpp
