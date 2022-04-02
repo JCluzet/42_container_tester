@@ -103,7 +103,7 @@ testing() {
         nul=1
     fi
     # if giveup=5 then we skip the test
-    if [ $giveup -eq 5 ]; then
+    if [ $giveup -eq 5 ] && [ $ignoreerror -eq 0 ]; then
         clear
         printf "STOP TESTER: too many${RED} ERROR $RESET \n"
         printf "Please check your error :\n\n\n"
@@ -229,6 +229,7 @@ fi
 # mv maintmp.hpp main/main.hpp
 
 echo "TESTING FT_CONTAINERS"
+ignoreerror=0
 
 # printf "\n\n\n\n"
 path_vector=$(find ../. -name "vector.hpp" -o -name "Vector.hpp" | head -n 1)
@@ -342,6 +343,12 @@ if [ $1 ] && [ "$1" != "--verbose" ]; then
     elif [ -f "$1" ]
     then
         actual_test=$1
+        if [ "$2" == "--loop" ]; then
+        ignoreerror=1
+        while [ 1 ]
+        do
+        testing; done
+        fi
         testing
         i=$(($i + 1))
     else
