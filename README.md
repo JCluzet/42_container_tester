@@ -21,11 +21,18 @@
 
 ## OPTIONS :
 
- - Is you launch bash launch.sh without options, the tester will test all main find in main folder.
- - You can select 1 folder to test, using : bash launch.sh main/vec_capacity/
- - You can select 1 main to test, using : bash launch.sh main/vec_capacity/max_size.cpp
+```
+bash launch.sh                              <-- Launch all the test
+bash launch.sh main/vec_capacity/           <-- Launch only the main in folder vec_capacity
+bash launch.sh main/vec_capacity/empty.cpp  <-- Launch a specific test
 
- - If there is an error during the test, you can find it in the folder logs_students, the .log file will be generated only if an error is detected. if you want to generate all .log file (to check by yourself the diff), you can add **--verbose** option.
+
+bash launch.sh --verbose                       <-- Verbose OPTION
+
+* Using --verbose, all .log file (to check by yourself the diff) will be written.
+```
+
+ - If there is an error during the test, you can find it in the folder logs_students, the .log file will be generated only if an error is detected. if you want to generate all .log file, you can add **--verbose** option.
 
 
 
