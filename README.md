@@ -27,7 +27,7 @@ bash launch.sh main/vec_capacity/           <-- Launch only the main in folder v
 bash launch.sh main/vec_capacity/empty.cpp  <-- Launch a specific test
 
 
-bash launch.sh --verbose                       <-- Verbose OPTION
+bash launch.sh --verbose                    <-- Verbose OPTION
 
 * Using --verbose, all .log file (to check by yourself the diff) will be written.
 ```
