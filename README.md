@@ -23,7 +23,7 @@
 
 ```
 bash launch.sh                              <-- Launch all the test
-bash launch.sh main/vec_capacity/           <-- Launch only the main in folder vec_capacity
+bash launch.sh main/vec_capacity/           <-- Launch only tests in folder vec_capacity
 bash launch.sh main/vec_capacity/empty.cpp  <-- Launch a specific test
 
 
