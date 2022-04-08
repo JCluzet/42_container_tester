@@ -167,9 +167,9 @@ testing() {
         if [ "$verbose" == "--verbose" ]; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
-        echo " >> ----------------------- YOUR OUTPUT:" >$logs
+        echo " >> ----------------------- FT OUTPUT:" >$logs
         echo "$outputstud" >>$logs
-        echo " >> ----------------------- BOC OUTPUT:" >>$logs
+        echo " >> ----------------------- STD OUTPUT:" >>$logs
         echo "$outputboc" >>$logs
         echo " >> ----------------------- NO DIFF ✅ " >>$logs
         echo $diffoutput >> $logs
@@ -177,9 +177,9 @@ testing() {
         if [ "$verbose1" == "--verbose" ]; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
-        echo " >> ----------------------- YOUR OUTPUT:" >$logs
+        echo " >> ----------------------- FT OUTPUT:" >$logs
         echo "$outputstud" >>$logs
-        echo " >> ----------------------- BOC OUTPUT:" >>$logs
+        echo " >> ----------------------- STD OUTPUT:" >>$logs
         echo "$outputboc" >>$logs
         echo " >> ----------------------- NO DIFF ✅ " >>$logs
         echo $diffoutput >> $logs
@@ -188,9 +188,9 @@ testing() {
     if [ "$diffoutput" != "Compilation KO" ] && [ $nul -eq 0 ] ; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
-        echo " >> ----------------------- YOUR OUTPUT:" >$logs
+        echo " >> ----------------------- FT OUTPUT:" >$logs
         echo "$outputstud" >>$logs
-        echo " >> ----------------------- BOC OUTPUT:" >>$logs
+        echo " >> ----------------------- STD OUTPUT:" >>$logs
         echo "$outputboc" >>$logs
         echo " >> ----------------------- DIFF ❌ " >>$logs
         echo $diffoutput >> $logs
