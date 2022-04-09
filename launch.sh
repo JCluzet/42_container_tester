@@ -1,16 +1,8 @@
-# UNComment this line to enable fsanitize=address mode for all tests (the time will be wrong)
-
-
-
 if [ "$1" == "--sanitize" ] || [ "$2" == "--sanitize" ] || [ "$3" == "--sanitize" ];then
     DEBUG="-fsanitize=address"
 else
     DEBUG=""
 fi
-
-
-
-
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
