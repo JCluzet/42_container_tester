@@ -12,16 +12,16 @@
 
 #pragma once
 
-namespace ft {}
-using namespace ft;
+namespace std {}
+using namespace std;
 
 #include <vector>
 #include <iostream>
 #include <stack>
 #include <iterator>
-#include "../.././stack/stack.hpp"
-#include "../.././stack/vector.hpp"
-#include "../.././stack/map.hpp"
+#include "../.././containers/stack.hpp"
+#include "../.././containers/vector.hpp"
+#include "../.././containers/map.hpp"
 #include <map>
  
 template <typename T>
