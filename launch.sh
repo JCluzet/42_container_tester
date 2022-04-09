@@ -1,4 +1,17 @@
-# define colors
+# UNComment this line to enable fsanitize=address mode for all tests (the time will be wrong)
+
+
+
+if [ "$1" == "--sanitize" ] || [ "$2" == "--sanitize" ] || [ "$3" == "--sanitize" ];then
+    DEBUG="-fsanitize=address"
+else
+    DEBUG=""
+fi
+
+
+
+
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 RESET='\033[0m'
@@ -78,7 +91,7 @@ testing() {
     # printf ">>$actual<<\n"
     maxnb=22
     getspace=$(($maxnb-$actualnb))
-    clang++ -Wall -Wextra -Werror -g3 $actual_test >.dev 2>&1
+    clang++ -Wall -Wextra -Werror -g3 $DEBUG $actual_test >.dev 2>&1
     # output maxnb - maxnb space characters
     if [ "$?" == "0" ]; then
         printf "$WHITE$BOLD$actual$RESET"
@@ -161,9 +174,13 @@ testing() {
             printf "s$RESET |"
             goodtest=$((goodtest+1))
         else
+            if [ "$DEBUG" != "-fsanitize=address" ]; then
             printf "  $GREEN$boc_t"
             printf "s$RESET  | $RED$stud_t"
             printf "s$RESET | $RED--> >20x slower than std $RESET"                                         # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
+            else
+            printf "$YELLOW   UNAVAILABLE   $RESET |"
+            fi
         fi 
         if [ "$verbose" == "--verbose" ]; then
         mkdir -p $logs >/dev/null 2>&1
@@ -353,7 +370,7 @@ if [ $1 ] && [ "$1" != "--verbose" ]; then
         testing
         i=$(($i + 1))
     else
-        printf "$RED \nThe argument $RESET$1$RED is not a folder name or a file name.\n$RESET\nExemple : ./launch.sh stack\n          ./launch.sh vector\n          ./launch.sh map\n          ./launch.sh main/vector_capacity\n          ./launch.sh main/vector_capacity/vec_push_back.c\n          ./launch.sh\n"
+        printf "$RED \nThe argument $RESET$1$RED is not a folder name or a file name.\n$RESET\nExemple : ./launch.sh stack\n          ./launch.sh vector\n          ./launch.sh map\n          ./launch.sh main/vector_capacity\n          ./launch.sh main/vector_capacity/vec_push_back.c\n          ./launch.sh\n\nIf you trying to use option like --loop/--verbose or --sanitize, enter main before\n"
         exit 1
     fi
 else
@@ -370,10 +387,17 @@ else
     printf "$WHITE           └──> Find logs in the folder$BOLD logs_student$RESET$WHITE$RESET\n\n"
 fi
 
+printf "    $WHITE Now what ? \n"
+printf "     $GREEN --sanitize $RESET : $WHITE Launch select test with -fsanitize=address$RESET\n"
+printf "     $GREEN --loop $RESET     : $WHITE Launch select test with a loop (to work and check result) $RESET\n"
+printf "     $GREEN --verbose $RESET  : $WHITE Print all the result test in logs_student/ $RESET\n\n"
+
 
 if [ -f "a.out" ]; then
     rm a.out > /dev/null 2>&1
 fi
+
+rm -rf a.out.dSYM > /dev/null 2>&1
 
 
 # actual_test="main/vector_main/copy_constructor.cpp"
