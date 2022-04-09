@@ -6,7 +6,7 @@ int main()
 
     unsigned int i = 0;
 
-    while ( i < 1000000 )
+    while ( i < 500000 )
     {
         m1.insert(pair<int, int>(i, i));
         i++;
