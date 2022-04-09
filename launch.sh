@@ -163,7 +163,7 @@ testing() {
         else
             printf "  $GREEN$boc_t"
             printf "s$RESET  | $RED$stud_t"
-            printf "s$RESET | $RED--> 20x slower than std $RESET"                                         # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
+            printf "s$RESET | $RED--> >20x slower than std $RESET"                                         # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
         fi 
         if [ "$verbose" == "--verbose" ]; then
         mkdir -p $logs >/dev/null 2>&1
