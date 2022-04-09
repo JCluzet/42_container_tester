@@ -19,8 +19,9 @@ int main()
 
     output_map(m1);
 
-    // m1.erase(m1.begin());
+    m1.erase(m1.begin()); 
 
+    output_map(m1);
     
 
     // std::cout << m2[4] << std::endl;
