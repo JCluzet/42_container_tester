@@ -4,6 +4,8 @@
 void output_map(map<int, int> &m)
 {
     std::cout << "size:" << m.size() << "   ";
+    if ( m.size() == 0 )
+        return;
     map<int,int>::iterator it = m.begin();
     for (unsigned int i = 0; i < m.size(); i++)
     {
