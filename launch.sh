@@ -103,7 +103,7 @@ testing() {
         nul=1
     fi
     # if giveup=5 then we skip the test
-    if [ $giveup -eq 5 ] && [ $ignoreerror -eq 0 ]; then
+    if [ $giveup -eq 4 ] && [ $ignoreerror -eq 0 ]; then
         clear
         printf "STOP TESTER: too many${RED} ERROR $RESET \n"
         printf "Please check your error :\n\n\n"
@@ -147,14 +147,15 @@ testing() {
         diffoutput="Compilation KO"
     fi
     # remove all after first newline
-    stud_t=$(echo $stud_time | sed 's/.\{5\}//' | cut -d " " -f 1 | sed 's/.\{2\}//' | sed 's/.$//')
-    boc_t=$(echo $boc_time | sed 's/.\{5\}//' | cut -d " " -f 1 | sed 's/.\{2\}//' | sed 's/.$//')
+    stud_t=$(echo $stud_time | sed 's/.\{5\}//' | cut -d " " -f 1 | sed 's/.\{2\}//' | sed 's/.$//' | sed s/','/'.'/g)
+    boc_t=$(echo $boc_time | sed 's/.\{5\}//' | cut -d " " -f 1 | sed 's/.\{2\}//' | sed 's/.$//' | sed s/','/'.'/g)
     if [ -z "$diffoutput" ] && [ $nul -eq 0 ]; then
         printf "| $GREEN   OK    $RESET|"
         # if stud_t - boc_t < 0.3 then OK else KO
-        good1="$stud_t $boc_t"
-        good=$(echo "$good1" | awk '{if ($1-$2 < 0.06) print "OK"; else print "KO"}')
-        if [ "$good" == "OK" ]; then
+        # good1="$stud_t $boc_t"
+        good=$(echo "$stud_t<$boc_t*20" | bc)
+        # good=$(echo "$good1" | awk '{if ($1-$2 < 0.06) print "OK"; else print "KO"}')
+        if [ "$good" == "1" ]; then
             printf "  $GREEN$boc_t"
             printf "s$RESET  | $GREEN$stud_t"
             printf "s$RESET |"
@@ -162,8 +163,8 @@ testing() {
         else
             printf "  $GREEN$boc_t"
             printf "s$RESET  | $RED$stud_t"
-            printf "s$RESET |"
-        fi
+            printf "s$RESET | $RED--> 20x slower than std $RESET"                                         # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
+        fi 
         if [ "$verbose" == "--verbose" ]; then
         mkdir -p $logs >/dev/null 2>&1
         rm -r $logs
