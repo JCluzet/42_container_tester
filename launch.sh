@@ -1,4 +1,4 @@
-if [ "$1" == "--sanitize" ] || [ "$2" == "--sanitize" ] || [ "$3" == "--sanitize" ];then
+if [ "$1" == "--sanitize" ] || [ "$2" == "--sanitize" ] || [ "$3" == "--sanitize" ]; then
     DEBUG="-fsanitize=address"
 else
     DEBUG=""
@@ -14,8 +14,7 @@ PURPLE='\033[0;35m'
 WHITE='\033[1;37m'
 
 output=$(echo -e "test")
-if [[ $output == "test" ]]
-then
+if [[ $output == "test" ]]; then
     clear
 else
     clear
@@ -23,12 +22,10 @@ else
     exit 1
 fi
 
-
 clear
 
-header()
-{
-printf "$WHITE
+header() {
+    printf "$WHITE
           ___            _        _                 _            _            
          / __\___  _ __ | |_ __ _(_)_ __   ___ _ __| |_ ___  ___| |_ ___ _ __ 
         / /  / _ \| '_ \| __/ _\` | | '_ \ / _ \ '__| __/ _ \/ __| __/ _ \ '__|
@@ -37,22 +34,22 @@ printf "$WHITE
                                                |_____|          by Grademe.fr$RESET\n\n"
 }
 
-rm -rf logs_student > /dev/null 2>&1
+rm -rf logs_student >/dev/null 2>&1
 
 test_byfolder() {
     for folder in main/$folderact/; do
-#stock folder in foldername variable in MAJ mode (upper case) and remove the last / to get the name of the folder and remove the first 5 characteres
-foldername=$(echo $folder | tr '[:lower:]' '[:upper:]' | sed 's/.$//' | sed 's/^.\{5\}//')
-if [ $i -ne 0 ]; then
-    printf "\n --> $PURPLE$BOLD$foldername\n"
-else
-    printf " --> $PURPLE$BOLD$foldername\n"
-fi
-for actual_test in $(find $folder -name "*.cpp" -type f); do
-    testing
-    i=$(($i + 1))
-done
-done
+        #stock folder in foldername variable in MAJ mode (upper case) and remove the last / to get the name of the folder and remove the first 5 characteres
+        foldername=$(echo $folder | tr '[:lower:]' '[:upper:]' | sed 's/.$//' | sed 's/^.\{5\}//')
+        if [ $i -ne 0 ]; then
+            printf "\n --> $PURPLE$BOLD$foldername\n"
+        else
+            printf " --> $PURPLE$BOLD$foldername\n"
+        fi
+        for actual_test in $(find $folder -name "*.cpp" -type f); do
+            testing
+            i=$(($i + 1))
+        done
+    done
 }
 
 switch_tostud() {
@@ -82,7 +79,7 @@ testing() {
     actualnb=$(echo $actual | wc -c)
     # printf ">>$actual<<\n"
     maxnb=22
-    getspace=$(($maxnb-$actualnb))
+    getspace=$(($maxnb - $actualnb))
     clang++ -Wall -Wextra -Werror -g3 $DEBUG $actual_test >.dev 2>&1
     # output maxnb - maxnb space characters
     if [ "$?" == "0" ]; then
@@ -122,7 +119,7 @@ testing() {
 
         # starttime=$(date +%s)
         # time ./a.out 2>&1 ; sleep 1 ; kill -9 $! >/dev/null 2>&1
-        # # if process is still running after 1 second, it's a timeout error 
+        # # if process is still running after 1 second, it's a timeout error
         # endtime=$(date +%s)
         # echo "heyyyy"
         # if [ $(($endtime - $starttime)) -gt 1 ]; then
@@ -130,23 +127,29 @@ testing() {
         #     nul=1
         # fi
 
-
-        outputstud=$(./a.out )
-        stud_time="$(time ( ./a.out ) 2>&1 1>/dev/null)"
+        timeout=0
+        outputstud=$(timeout 4 ./a.out)
+        out=$(echo $?)
+        if [ "$out" == "124" ]; then
+            # printf "$RED        TIMEOUT $RESET"
+            timeout=1
+        else
+            stud_time="$(timeout 4 time ./a.out 2>&1 1>/dev/null)"
+        fi
         switch_toboc
         clang++ -Wall -Wextra -Werror -g3 $actual_test >.dev 2>&1
         if [ "$?" == "0" ]; then
-        printf "|$GREEN       OK        $RESET"
-        nul=0
-    else
-        mkdir -p $logs >/dev/null 2>&1
-        rm -r $logs
-        cat .dev >$logs
-        printf "|$RED       KO        $RESET"
-        nul=1
-    fi
+            printf "|$GREEN       OK        $RESET"
+            nul=0
+        else
+            mkdir -p $logs >/dev/null 2>&1
+            rm -r $logs
+            cat .dev >$logs
+            printf "|$RED       KO        $RESET"
+            nul=1
+        fi
         outputboc=$(./a.out)
-        boc_time="$(time ( ./a.out ) 2>&1 1>/dev/null )"
+        boc_time="$(time (./a.out) 2>&1 1>/dev/null)"
         diffoutput=$(diff <(echo "$outputstud") <(echo "$outputboc"))
     else
         diffoutput="Compilation KO"
@@ -164,48 +167,52 @@ testing() {
             printf "  $GREEN$boc_t"
             printf "s$RESET  | $GREEN$stud_t"
             printf "s$RESET |"
-            goodtest=$((goodtest+1))
+            goodtest=$((goodtest + 1))
         else
             if [ "$DEBUG" != "-fsanitize=address" ]; then
-            printf "  $GREEN$boc_t"
-            printf "s$RESET  | $RED$stud_t"
-            printf "s$RESET | $RED--> >20x slower than std $RESET"                                         # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
+                printf "  $GREEN$boc_t"
+                printf "s$RESET  | $RED$stud_t"
+                printf "s$RESET | $RED--> >20x slower than std $RESET" # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
             else
-            printf "$YELLOW   UNAVAILABLE   $RESET |"
+                printf "$YELLOW   UNAVAILABLE   $RESET |"
             fi
-        fi 
+        fi
         if [ "$verbose" == "--verbose" ]; then
-        mkdir -p $logs >/dev/null 2>&1
-        rm -r $logs
-        echo " >> ----------------------- FT OUTPUT:" >$logs
-        echo "$outputstud" >>$logs
-        echo " >> ----------------------- STD OUTPUT:" >>$logs
-        echo "$outputboc" >>$logs
-        echo " >> ----------------------- NO DIFF ✅ " >>$logs
-        echo $diffoutput >> $logs
+            mkdir -p $logs >/dev/null 2>&1
+            rm -r $logs
+            echo " >> ----------------------- FT OUTPUT:" >$logs
+            echo "$outputstud" >>$logs
+            echo " >> ----------------------- STD OUTPUT:" >>$logs
+            echo "$outputboc" >>$logs
+            echo " >> ----------------------- NO DIFF ✅ " >>$logs
+            echo $diffoutput >>$logs
         fi
         if [ "$verbose1" == "--verbose" ]; then
-        mkdir -p $logs >/dev/null 2>&1
-        rm -r $logs
-        echo " >> ----------------------- FT OUTPUT:" >$logs
-        echo "$outputstud" >>$logs
-        echo " >> ----------------------- STD OUTPUT:" >>$logs
-        echo "$outputboc" >>$logs
-        echo " >> ----------------------- NO DIFF ✅ " >>$logs
-        echo $diffoutput >> $logs
+            mkdir -p $logs >/dev/null 2>&1
+            rm -r $logs
+            echo " >> ----------------------- FT OUTPUT:" >$logs
+            echo "$outputstud" >>$logs
+            echo " >> ----------------------- STD OUTPUT:" >>$logs
+            echo "$outputboc" >>$logs
+            echo " >> ----------------------- NO DIFF ✅ " >>$logs
+            echo $diffoutput >>$logs
         fi
     else
-    if [ "$diffoutput" != "Compilation KO" ] && [ $nul -eq 0 ] ; then
-        mkdir -p $logs >/dev/null 2>&1
-        rm -r $logs
-        echo " >> ----------------------- FT OUTPUT:" >$logs
-        echo "$outputstud" >>$logs
-        echo " >> ----------------------- STD OUTPUT:" >>$logs
-        echo "$outputboc" >>$logs
-        echo " >> ----------------------- DIFF ❌ " >>$logs
-        echo $diffoutput >> $logs
-    fi
-        printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
+        if [ "$diffoutput" != "Compilation KO" ] && [ $nul -eq 0 ]; then
+            mkdir -p $logs >/dev/null 2>&1
+            rm -r $logs
+            echo " >> ----------------------- FT OUTPUT:" >$logs
+            echo "$outputstud" >>$logs
+            echo " >> ----------------------- STD OUTPUT:" >>$logs
+            echo "$outputboc" >>$logs
+            echo " >> ----------------------- DIFF ❌ " >>$logs
+            echo $diffoutput >>$logs
+        fi
+        if [ "$timeout" == "1" ]; then
+            printf "| $RED   KO  $RESET  |  $GREEN$boc_t$RED  $WHITE |$RED TIMEOUT $RESET"
+        else
+        printf "| $RED   KO  $RESET -> $RED check logs_student$RESET|"
+        fi
     fi
     printf "\n"
 }
@@ -303,8 +310,8 @@ mv maintmp.hpp main/main.hpp
 
 echo "#include \"../$path_stack\"" >>main/main.hpp
 echo "#include \"../$path_vector\"" >>main/main.hpp
-echo "#include \"../$path_map\"" >> main/main.hpp
-echo "#include <map>" >> main/main.hpp
+echo "#include \"../$path_map\"" >>main/main.hpp
+echo "#include <map>" >>main/main.hpp
 # echo "#include \"print_vec.hpp\"" >>main/main.hpp
 echo " " >>main/main.hpp
 echo "template <typename T>" >>main/main.hpp
@@ -329,35 +336,29 @@ goodtest=0
 # if there is a argument then only test the file name given in argument
 if [ $1 ] && [ "$1" != "--verbose" ]; then
     # if argument is "stack" or "STACK" then only test the stack
-    if [ "$1" == "stack" ]
-    then
+    if [ "$1" == "stack" ]; then
         folderact="stack_*"
         test_byfolder
-    elif [ "$1" == "vector" ]
-    then
+    elif [ "$1" == "vector" ]; then
         folderact="vec_*"
         test_byfolder
-    elif [ "$1" == "map" ]
-    then
+    elif [ "$1" == "map" ]; then
         folderact="map_*"
         test_byfolder
     # elif $1 is a folder name
-    elif [ "$1" == "main" ] || [ "$1" == "main/" ]
-    then
+    elif [ "$1" == "main" ] || [ "$1" == "main/" ]; then
         folderact="*"
         test_byfolder
-    elif [ -d "$1" ]
-    then
+    elif [ -d "$1" ]; then
         folderact=$(echo $1 | sed 's/^.\{5\}//')
         test_byfolder
-    elif [ -f "$1" ]
-    then
+    elif [ -f "$1" ]; then
         actual_test=$1
         if [ "$2" == "--loop" ]; then
-        ignoreerror=1
-        while [ 1 ]
-        do
-        testing; done
+            ignoreerror=1
+            while [ 1 ]; do
+                testing
+            done
         fi
         testing
         i=$(($i + 1))
@@ -369,8 +370,8 @@ else
     folderact="*"
     test_byfolder
 fi
-rm .dev > /dev/null 2>&1
-rm a.out > /dev/null 2>&1
+rm .dev >/dev/null 2>&1
+rm a.out >/dev/null 2>&1
 
 if [ $goodtest -eq $i ]; then
     printf "\n\n $WHITE RESULT : $GREEN$goodtest$RESET/$WHITE$i 🥳 $RESET\n\n"
@@ -384,13 +385,11 @@ printf "     $GREEN --sanitize $RESET : $WHITE Launch select test with -fsanitiz
 printf "     $GREEN --loop $RESET     : $WHITE Launch select test with a loop (to work and check result) $RESET\n"
 printf "     $GREEN --verbose $RESET  : $WHITE Print all the result test in logs_student/ $RESET\n\n"
 
-
 if [ -f "a.out" ]; then
-    rm a.out > /dev/null 2>&1
+    rm a.out >/dev/null 2>&1
 fi
 
-rm -rf a.out.dSYM > /dev/null 2>&1
-
+rm -rf a.out.dSYM >/dev/null 2>&1
 
 # actual_test="main/vector_main/copy_constructor.cpp"
 # testing

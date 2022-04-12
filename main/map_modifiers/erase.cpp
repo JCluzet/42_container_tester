@@ -6,11 +6,12 @@ void output_map(map<int, int> &m)
     std::cout << "size:" << m.size() << "   ";
     if ( m.size() == 0 )
         return;
-    map<int,int>::iterator it = m.begin();
+    // map<int,int>::iterator it = m.begin();
     for (unsigned int i = 0; i < m.size(); i++)
     {
-        std::cout << (*it).first << "::" << (*it).second << " ";
-        ++it;
+        std::cout << i << "::" <<  m[i] << " ";
+        // std::cout << (*it).first << "::" << (*it).second << " ";
+        // ++it;
     }
     std::cout << std::endl;
 }
@@ -18,18 +19,20 @@ void output_map(map<int, int> &m)
 int main()
 {
     map<int, int> m1;
-    m1.insert(pair<int, int>(1, 1));
-    m1.insert(pair<int, int>(2, 4));
-    output_map(m1);
 
+    for (int i = 0; i < 10; i++)
+        m1.insert(pair<int,int>(i, i));
+
+    output_map(m1);
     // use of erase function
-    m1.erase(m1.begin());
+    for (int i = 0; i < 2; i++)
+    {
+        m1.erase(m1.find(i));
+        output_map(m1);
+    }
+    // m1.erase(m1.begin());
 
-    output_map(m1);
-
-    m1.erase(m1.begin()); 
-
-    output_map(m1);
+    // output_map(m1);
     
 
     // std::cout << m2[4] << std::endl;
