@@ -348,6 +348,8 @@ printf "\n                       $WHITE COMPILATION $RESET |$WHITE STD COMPILATI
 
 i=0
 goodtest=0
+        goloop=0
+
 # for each folder in the directory main/
 # if there is a argument then only test the file name given in argument
 if [ $1 ] && [ "$1" != "--verbose" ]; then
@@ -370,7 +372,6 @@ if [ $1 ] && [ "$1" != "--verbose" ]; then
         test_byfolder
     elif [ -f "$1" ]; then
         actual_test=$1
-        goloop=0
         if [ "$2" == "--loop" ]; then
             ignoreerror=1
             while [ 1 ]; do
