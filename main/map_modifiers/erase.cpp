@@ -1,40 +1,54 @@
 #include "../main.hpp"
 
 
-void output_map(map<int, int> &m)
+int main ()
 {
-    std::cout << "size:" << m.size() << "   ";
-    if ( m.size() == 0 )
-        return;
-    // map<int,int>::iterator it = m.begin();
-    for (unsigned int i = 0; i < m.size(); i++)
-    {
-        std::cout << i << "::" <<  m[i] << " ";
-        // std::cout << (*it).first << "::" << (*it).second << " ";
-        // ++it;
-    }
-    std::cout << std::endl;
+	map<char,int> mymap;
+	map<char,int>::iterator it;
+
+	// insert some values:
+	mymap['a']=10;
+	mymap['b']=20;
+	mymap['c']=30;
+	mymap['d']=40;
+	mymap['e']=50;
+	mymap['f']=60;
+
+	it=mymap.find('b');
+    mymap.erase (it);                   // erasing by iterator
+
+	mymap.erase('e');                  // erasing by key
+
+	// it=mymap.find ('e');
+	// mymap.erase ( it, mymap.end() );    // erasing by range
+
+	// show content:
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+	// std::cout << it->first << " => " << it->second << '\n';
+
+	return 0;
 }
 
-int main()
-{
-    map<int, int> m1;
+// int main ()
+// {
+// 	map<char,int> mymap;
 
-    for (int i = 0; i < 10; i++)
-        m1.insert(pair<int,int>(i, i));
+// 	mymap['x']=100;
+// 	mymap['y']=200;
+// 	mymap['z']=300;
 
-    output_map(m1);
-    // use of erase function
-    for (int i = 0; i < 2; i++)
-    {
-        m1.erase(m1.find(i));
-        output_map(m1);
-    }
-    // m1.erase(m1.begin());
+// 	std::cout << "mymap contains:\n";
+// 	for (map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+// 		std::cout << it->first << " => " << it->second << '\n';
 
-    // output_map(m1);
-    
+// 	mymap.clear();
+// 	mymap['a']=1101;
+// 	mymap['b']=2202;
 
-    // std::cout << m2[4] << std::endl;
-    return(0);
-}
+// 	std::cout << "mymap contains:\n";
+// 	for (map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+// 		std::cout << it->first << " => " << it->second << '\n';
+
+// 	return 0;
+// }
