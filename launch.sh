@@ -4,6 +4,18 @@ else
     DEBUG=""
 fi
 
+#if command timeout is not installed, tell a wrong message
+out=$(timeout && echo $?)
+if [ "$out" == "124" ]; then
+    timeoutt=""
+    else
+    timeoutt="timeout 4"
+fi
+# if [ ! -x "$(command -v timeout)" ]; then
+    # echo "Command timeout is not installed. Please install it."
+    # exit 1
+# fi
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 RESET='\033[0m'
@@ -128,7 +140,9 @@ testing() {
         # fi
 
         timeout=0
-        outputstud=$(timeout 4 ./a.out)
+        # if timeout command exist 
+
+        outputstud=$($timeoutt ./a.out)
         out=$(echo $?)
         if [ "$out" == "124" ]; then
             # printf "$RED        TIMEOUT $RESET"
