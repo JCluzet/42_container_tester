@@ -1,9 +1,0 @@
-In file included from main/map_modifiers//clear.cpp:1:
-In file included from main/map_modifiers/../main.hpp:24:
-main/map_modifiers/../../.././containers/map.hpp:106:30: error: no member named 'clear' in 'ft::Tree<ft::pair<int, int>, std::less<int> >'
-        void clear() { _tree.clear(); }
-                       ~~~~~ ^
-main/map_modifiers//clear.cpp:17:8: note: in instantiation of member function 'ft::map<int, int>::clear' requested here
-    m1.clear();
-       ^
-1 error generated.
