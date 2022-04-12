@@ -5,12 +5,12 @@ else
 fi
 
 #if command timeout is not installed, tell a wrong message
-out=$(timeout && echo $?)
-if [ "$out" == "124" ]; then
-    timeoutt=""
-    else
-    timeoutt="timeout 4"
-fi
+# out=$(timeout && echo $?)
+# if [ "$out" == "124" ]; then
+#     timeoutt=""
+#     else
+#     timeoutt="timeout 4"
+# fi
 # if [ ! -x "$(command -v timeout)" ]; then
     # echo "Command timeout is not installed. Please install it."
     # exit 1
