@@ -228,7 +228,9 @@ testing() {
         printf "| $RED   KO  $RESET -> $RED check logs_student$RESET|"
         fi
     fi
-    printf "\n"
+    if [ "$goloop" == "0" ]; then
+        printf "\n"
+    fi
 }
 
 verbose=$1
@@ -368,9 +370,12 @@ if [ $1 ] && [ "$1" != "--verbose" ]; then
         test_byfolder
     elif [ -f "$1" ]; then
         actual_test=$1
+        goloop=0
         if [ "$2" == "--loop" ]; then
             ignoreerror=1
             while [ 1 ]; do
+                goloop=1
+                printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
                 testing
             done
         fi
