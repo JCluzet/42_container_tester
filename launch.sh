@@ -134,7 +134,7 @@ testing() {
             # printf "$RED        TIMEOUT $RESET"
             timeout=1
         else
-            stud_time="$(timeout 4 time ./a.out 2>&1 1>/dev/null)"
+            stud_time="$(time (./a.out) 2>&1 1>/dev/null)"
         fi
         switch_toboc
         clang++ -Wall -Wextra -Werror -g3 $actual_test >.dev 2>&1

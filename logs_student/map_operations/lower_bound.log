@@ -1,0 +1,9 @@
+In file included from main/map_operations//lower_bound.cpp:1:
+In file included from main/map_operations/../main.hpp:24:
+main/map_operations/../../.././containers/map.hpp:111:35: error: no member named 'lower_bound' in 'ft::Tree<ft::pair<int, int>, std::less<int> >'
+            return iterator(_tree.lower_bound(k), _tree._last());
+                            ~~~~~ ^
+main/map_operations//lower_bound.cpp:16:37: note: in instantiation of member function 'ft::map<int, int>::lower_bound' requested here
+    map<int, int>::iterator it = m1.lower_bound(m1.find(i * 5 * 324)->first);
+                                    ^
+1 error generated.
