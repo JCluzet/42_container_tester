@@ -12,23 +12,87 @@ int main ()
 	mymap['c']=30;
 	mymap['d']=40;
 	mymap['e']=50;
-	mymap['f']=60;
+	// mymap['f']=60;
+	// mymap['g']=70;
 
-	it=mymap.find('b');
-    mymap.erase (it);                   // erasing by iterator
+	it=mymap.find('e');
+	// mymap.erase (it);                   // erasing by iterator
+	it=mymap.find('f');
+    mymap.erase ('a');                   // erasing by iterator
+    mymap.erase ('c');
+    // mymap.erase ('b');
+    // mymap.erase (it);                   // erasing by iterator
+    // mymap.erase ('b');                   // erasing by iterator
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+    std::cout << std::endl;    
+    // mymap.erase ('g');                   // erasing by iterator
+    // mymap.erase ('a');                   // erasing by iterator
 
-	mymap.erase('e');                  // erasing by key
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+    std::cout << std::endl;
+
+	// mymap.erase('c');                  // erasing by key
 
 	// it=mymap.find ('e');
 	// mymap.erase ( it, mymap.end() );    // erasing by range
 
 	// show content:
-	for (it=mymap.begin(); it!=mymap.end(); ++it)
-		std::cout << it->first << " => " << it->second << '\n';
-	// std::cout << it->first << " => " << it->second << '\n';
-
+	// for (it=mymap.begin(); it!=mymap.end(); ++it)
+		// std::cout << it->first << " => " << it->second << '\n';
+    // for (map<char, int>::size_type i = 0; i < mymap.size(); i++)
+    //     std::cout << mymap[i] << " => " << mymap[i] << '\n';
+    std::cout << std::endl;
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #include "../main.hpp"
+
+
+// int main ()
+// {
+// 	map<char,int> mymap;
+// 	map<char,int>::iterator it;
+
+// 	// insert some values:
+// 	mymap['a']=10;
+// 	mymap['b']=20;
+// 	mymap['c']=30;
+// 	mymap['d']=40;
+// 	mymap['e']=50;
+// 	mymap['f']=60;
+
+// 	it=mymap.find('b');
+//     mymap.erase (it);                   // erasing by iterator
+
+// 	mymap.erase('e');                  // erasing by key
+
+// 	// it=mymap.find ('e');
+// 	// mymap.erase ( it, mymap.end() );    // erasing by range
+
+// 	// show content:
+// 	for (it=mymap.begin(); it!=mymap.end(); ++it)
+// 		std::cout << it->first << " => " << it->second << '\n';
+// 	// std::cout << it->first << " => " << it->second << '\n';
+
+// 	return 0;
+// }
 
 // int main ()
 // {
