@@ -8,7 +8,7 @@ int main ()
 	// mymap['y']=200;
 
 	std::cout << "mymap contains:\n";
-	mymap['z']=300;
+	// mymap['z']=300;
     map<char,int>::iterator it = mymap.begin();
 
     // std::cout << it->first << std::endl;
