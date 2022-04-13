@@ -10,7 +10,7 @@ int main ()
 	std::cout << "begin() == end() ? " << (mymap.begin() == mymap.end()) << std::endl;
     mymap['z']=300;
     std::cout << "begin() == end() ? " << (mymap.begin() == mymap.end()) << std::endl;
-    mymap.erase(mymap.begin());
+    // mymap.erase(mymap.begin());
     std::cout << "begin() == end() ? " << (mymap.begin() == mymap.end()) << std::endl << std::endl;
     map<char, int> mymap2(mymap);
     std::cout << "begin() == end() ? " << (mymap2.begin() == mymap2.end()) << std::endl;
