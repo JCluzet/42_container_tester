@@ -191,7 +191,7 @@ testing() {
                 printf "$YELLOW   UNAVAILABLE   $RESET |"
             fi
         fi
-        if [ "$verbose" == "--verbose" ]; then
+        if [ "$verbose" == "--verbose" ] || [ "$verbose2" == '--verbose' ]; then
             mkdir -p $logs >/dev/null 2>&1
             rm -r $logs
             echo " >> ----------------------- FT OUTPUT:" >$logs
@@ -235,6 +235,7 @@ testing() {
 
 verbose=$1
 verbose1=$2
+verbose2=$3
 
 echo "----------- FT_CONTAINERS TESTER SETUP ----------------"
 
@@ -372,7 +373,7 @@ if [ $1 ] && [ "$1" != "--verbose" ]; then
         test_byfolder
     elif [ -f "$1" ]; then
         actual_test=$1
-        if [ "$2" == "--loop" ]; then
+        if [ "$2" == "--loop" ] || [ "$3" == "--loop" ] || [ "$4" == "--loop" ] ; then
             ignoreerror=1
             while [ 1 ]; do
                 goloop=1
