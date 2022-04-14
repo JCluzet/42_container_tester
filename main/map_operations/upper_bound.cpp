@@ -13,7 +13,7 @@ int main()
     }
 
     // test lower_bound function
-    map<int, int>::iterator it = m1.lower_bound(m1.find(i - 324)->first);
+    map<int, int>::iterator it = m1.upper_bound(m1.find(i - 324)->first);
     std::cout << (*it).first << std::endl;
     i = 3;
     it = m1.lower_bound(m1.lower_bound(m1.find(i * 5)->first)->first);
