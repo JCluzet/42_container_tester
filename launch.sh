@@ -188,7 +188,7 @@ testing() {
                 printf "s$RESET  | $RED$stud_t"
                 printf "s$RESET | $RED--> >20x slower than std $RESET" # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
             else
-                printf "$YELLOW   UNAVAILABLE   $RESET |"
+                printf "$GREEN    --SANITIZE    $RESET |"
             fi
         fi
         if [ "$verbose" == "--verbose" ] || [ "$verbose2" == '--verbose' ]; then

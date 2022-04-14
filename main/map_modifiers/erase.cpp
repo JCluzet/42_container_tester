@@ -26,6 +26,22 @@ int main ()
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
 		std::cout << it->first << " => " << it->second << '\n';
     std::cout << std::endl;    
+
+
+	std::string s = "0100200222100101021020120102102010210210210";
+	for (unsigned int i = 0; i < s.size(); i++)
+	{
+		if (s[i] == '2')
+		{
+			mymap.erase (s[i]);
+		}
+		else
+		{
+			mymap.insert (pair<char, int>(s[i], i));
+		}
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+	}
     mymap.erase ('g');                   // erasing by iterator
     mymap.erase ('a');                   // erasing by iterator
 
