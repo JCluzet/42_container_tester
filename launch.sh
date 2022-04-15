@@ -189,6 +189,8 @@ testing() {
                 printf "s$RESET | $RED--> >20x slower than std $RESET" # GESTON DU TEMPS DE COMPILATION          !!!!!!!!!!!!!
             else
                 printf "$GREEN    --SANITIZE    $RESET |"
+                    goodtest=$((goodtest + 1))
+
             fi
         fi
         if [ "$verbose" == "--verbose" ] || [ "$verbose2" == '--verbose' ]; then
