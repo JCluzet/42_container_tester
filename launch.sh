@@ -225,7 +225,7 @@ testing() {
         if [ "$timeout" == "1" ]; then
             printf "| $RED   KO  $RESET  |  $GREEN$boc_t$RED  $WHITE |$RED TIMEOUT $RESET"
         else
-        printf "| $RED   KO  $RESET -> $RED check logs_student$RESET|"
+        printf "| $RED   KO  $RESET-> $RED check logs_student$RESET|"
         fi
     fi
     if [ "$goloop" == "0" ]; then
