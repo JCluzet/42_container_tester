@@ -17,8 +17,8 @@ int main()
 	}
 	
 	// for (vector<int>::const_iterator it = v.begin(); it != v.end(); ++it)
-	vector<int>::reverse_iterator it = v.rbegin();
-	vector<int>::reverse_iterator ite = v.rend();
+	vector<int>::const_reverse_iterator it = v.rbegin();
+	vector<int>::const_reverse_iterator ite = v.rend();
 	while (it != ite){
 		std::cout << (*(it)) << std::endl;
 		it++;

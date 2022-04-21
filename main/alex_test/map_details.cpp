@@ -28,7 +28,7 @@ void	printMap(map<K, V> m){
 		r += " ";
 	}
 	// std::cout << "NIP: " << std::endl;
-	// std::cout << r << std::endl;
+	std::cout << r << std::endl;
 	// std::cout << "YIP: " << std::endl;
 }
 
@@ -44,15 +44,16 @@ void	map_en_details(){
 	m[10] = 'G';
 	m.insert(make_pair(-10, 'z'));
 	printMap(m);
-	map<AK,AM>::reverse_iterator it = m.rend();
-	it--;
-	it--;
+	map<AK,AM>::reverse_iterator it = m.rbegin();
+	it++;
+	it++;
 	std::cout << m.size() << std::endl;
 	std::cout << it->first << std::endl;
 	m.insert(make_pair(3, '$'));
 	printMap(m);
 	std::cout << it->first << std::endl;
-	m.erase(3);
+	// std::cout << "HERE";
+	m.erase('3');
 	printMap(m);
 	std::cout << it->first << std::endl;
 	map<AK,AM> n;
