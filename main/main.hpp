@@ -19,9 +19,9 @@ using namespace std;
 #include <iostream>
 #include <stack>
 #include <iterator>
-#include "../.././containers/stack.hpp"
-#include "../.././containers/vector.hpp"
-#include "../.././containers/map.hpp"
+#include "../.././stack.hpp"
+#include "../.././vector.hpp"
+#include "../.././map.hpp"
 #include <map>
  
 template <typename T>
