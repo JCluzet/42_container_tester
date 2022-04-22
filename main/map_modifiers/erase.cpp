@@ -16,19 +16,17 @@ int main ()
 	// mymap['g']=70;
 
 	it=mymap.find('e');
-	// mymap.erase (it);                   // erasing by iterator
 	it=mymap.find('f');
     mymap.erase ('a');                   // erasing by iterator
     mymap.erase ('c');
-    // mymap.erase ('b');
-    // mymap.erase (it);                   // erasing by iterator
-    // mymap.erase ('b');                   // erasing by iterator
+    mymap.erase ('b');
+    mymap.erase ('b');                   // erasing by iterator
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
 		std::cout << it->first << " => " << it->second << '\n';
     std::cout << std::endl;    
 
 
-	std::string s = "0100200222100101021020120102102010210210210";
+	std::string s = "01002002221001010210201201021020110210210210";
 	for (unsigned int i = 0; i < s.size(); i++)
 	{
 		if (s[i] == '2')
