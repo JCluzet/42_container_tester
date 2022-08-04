@@ -7,7 +7,7 @@ int main()
     map<int, int> myMap2;
     
     // create a Tree
-    pair<int, int> p1(1, 1);
+    // pair<int, int> p1(1, 1);
     // test size
     // std::cout << "size: " << myMap2.size() << std::endl;
     // std::cout << "max_size: " << myMap2.max_size() << std::endl;

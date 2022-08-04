@@ -22,7 +22,9 @@ int main ()
 
     std::cout << "mymap contains:" << std::endl;
     for (map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); it++)
+	{
         std::cout << '3' << std::endl;
+	}
 	// std::cout << "mymap contains:\n";
 	// for (map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
 	// 	std::cout << it->first << " => " << it->second << '\n';
